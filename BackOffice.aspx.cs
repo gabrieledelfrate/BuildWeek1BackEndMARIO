@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace MARIO
 {
-    public partial class Backoffice : System.Web.UI.Page
+    public partial class BackOffice : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,13 +16,11 @@ namespace MARIO
                 GridViewProducts.DataBind();
             }
         }
-
-        protected void GridViewProducts_RowEditing(object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
+        protected void GridViewProducts_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewProducts.EditIndex = e.NewEditIndex;
             GridViewProducts.DataBind();
         }
-
         protected void rptCartItems_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Delete")
@@ -34,11 +32,10 @@ namespace MARIO
                 {
                     product.Remove(productId);
                     Session["idprodotto"] = product;
-                   
+
                 }
             }
         }
-        
+
     }
 }
-    
