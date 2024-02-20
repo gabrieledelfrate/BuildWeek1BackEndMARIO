@@ -73,7 +73,6 @@
     <Content Include="Images\piccol_logo.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="StyleCSS.css" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackOffice.aspx.cs">
@@ -123,6 +122,7 @@
   <ItemGroup>
     <Content Include="MasterPage.master" />
     <None Include="packages.config" />
+    <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
