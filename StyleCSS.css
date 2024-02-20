@@ -1,0 +1,44 @@
+﻿
+footer {
+    margin-top: 150px !important;
+    background: rgb(0,99,174);
+    background: linear-gradient(180deg, rgba(0,99,174,1) 41%, rgba(160,112,112,1) 63%, rgba(251,235,36,1) 88%);
+}
+
+    footer a {
+        text-decoration: none;
+    }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+.Mario {
+    background: rgba(0,99,174,1);
+    text-align: center;
+    color: #ffffff;
+    font-weight: 500;
+    align-items: center;
+}
+
+.sconti:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+nav {
+    box-shadow: 0px 16px 9px -13px rgba(0,0,0,0.44);
+}
+
+li {
+    list-style: none;
+}
+
+.logo {
+    width: 50px;
+    border-radius: 49%;
+}
+
+.prova {
+    list-style: none;
+}
