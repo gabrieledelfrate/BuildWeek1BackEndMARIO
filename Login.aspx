@@ -66,7 +66,7 @@
             margin-top: 20px;
             border: 1.5px solid rgb(109, 87, 121);
             outline: none;
-            color: white;
+            color: #3F51B5;
         }
 
         .btn {
