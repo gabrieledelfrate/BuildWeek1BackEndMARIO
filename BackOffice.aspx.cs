@@ -137,35 +137,40 @@ namespace MARIO
         }
         protected void btn_AddProduct(object sender, EventArgs e)
         {
-            try
+            if (Page.IsValid)
             {
-                string nome = txtNomeAdd.Text;
-                decimal prezzo = Convert.ToDecimal(txtPrezzoAdd.Text);
-                string descrizione = txtDescrizioneAdd.Text;
-                string immagine = txtImmagineAdd.Text;
 
-                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Collegamento"].ConnectionString))
+                try
                 {
-                    conn.Open();
+                    string nome = txtNomeAdd.Text;
+                    decimal prezzo = Convert.ToDecimal(txtPrezzoAdd.Text);
+                    string descrizione = txtDescrizioneAdd.Text;
+                    string immagine = txtImmagineAdd.Text;
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Prodotti (nome, prezzo, descrizione, immagine) VALUES (@nome, @prezzo, @descrizione, @immagine)", conn);  
-                    cmd.Parameters.AddWithValue("@nome", nome);
-                    cmd.Parameters.AddWithValue("@prezzo", prezzo);
-                    cmd.Parameters.AddWithValue("@descrizione", descrizione);
-                    cmd.Parameters.AddWithValue("@immagine", immagine);
-                    cmd.ExecuteNonQuery();
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Collegamento"].ConnectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("INSERT INTO Prodotti (nome, prezzo, descrizione, immagine) VALUES (@nome, @prezzo, @descrizione, @immagine)", conn);
+                        cmd.Parameters.AddWithValue("@nome", nome);
+                        cmd.Parameters.AddWithValue("@prezzo", prezzo);
+                        cmd.Parameters.AddWithValue("@descrizione", descrizione);
+                        cmd.Parameters.AddWithValue("@immagine", immagine);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    txtNomeAdd.Text = string.Empty;
+                    txtDescrizioneAdd.Text = string.Empty;
+                    txtImmagineAdd.Text = string.Empty;
                 }
-                txtNomeAdd.Text = string.Empty;
-                txtDescrizioneAdd.Text = string.Empty;
-                txtImmagineAdd.Text = string.Empty;
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.ToString());
-            }
-            finally
-            {
-                BindProductData();
+                catch (Exception ex)
+                {
+                    Response.Write(ex.ToString());
+                }
+                finally
+                {
+                    BindProductData();
+                }
             }
         }
     }
