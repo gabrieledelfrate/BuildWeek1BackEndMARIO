@@ -30,4 +30,13 @@
     <div class="container-lg m-auto mt-5">
         <asp:Literal ID="lblMessage" runat="server"></asp:Literal>
     </div>
+   <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" runat="server" Visible="false">
+    <div class="d-flex">
+        <div class="toast-body">
+            Prodotto aggiunto al carrello!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+
 </asp:Content>
