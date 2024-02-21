@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BackOffice.aspx.cs" Inherits="MARIO.BackOffice" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BackOffice.aspx.cs" Inherits="MARIO.BackOffice" %>
 
 <!DOCTYPE html>
 
@@ -124,4 +124,3 @@
     </form>
 </body>
 </html>
-
