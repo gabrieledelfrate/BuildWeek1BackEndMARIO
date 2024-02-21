@@ -15,11 +15,12 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="icon" type="image/x-icon" href="/Images/piccol.ico" />
-
 </head>
 <body>
 
     <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="ScriptManager"></asp:ScriptManager>
+
             <section class='pt-1 Mario d-flex align-items-center justify-content-center'>
         <p class='mb-1 sconti'>Sconti fino al 40% su Mario.</p>
     </section>
@@ -63,6 +64,7 @@
     </nav>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
             </asp:ContentPlaceHolder>
         </div>
     </form>
