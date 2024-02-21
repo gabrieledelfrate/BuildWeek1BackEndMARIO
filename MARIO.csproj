@@ -72,6 +72,7 @@
     <Content Include="Images\piccol.ico" />
     <Content Include="Images\piccol_logo.jpg" />
     <Content Include="Login.aspx" />
+    <Content Include="Registrazione.aspx" />
     <Content Include="StyleCSS.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -119,6 +120,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrazione.aspx.cs">
+      <DependentUpon>Registrazione.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrazione.aspx.designer.cs">
+      <DependentUpon>Registrazione.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPage.master" />
