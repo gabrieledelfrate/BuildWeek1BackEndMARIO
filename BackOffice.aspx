@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BackOffice.aspx.cs" Inherits="MARIO.BackOffice" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BackOffice.aspx.cs" Inherits="MARIO.BackOffice" %>
 
 <!DOCTYPE html>
 
@@ -25,43 +25,44 @@
         <div class="container my-5 pt-5">
             <div class="d-flex justify-content-around mb-5 row">
                 <div class="col-9">
-                <h2>ADMIN Page - Aggiungi, Modifica o Elimina prodotti dal DataBase</h2>
-                    </div>
+                    <h2>ADMIN Page - Aggiungi, Modifica o Elimina prodotti dal DataBase</h2>
+                </div>
                 <div class="col-3 d-flex justify-content-center align-items-center">
-                <asp:Button runat="server" CommandName="Add" CssClass="btn btn-info" Text="Aggiungi prodotto" OnClientClick="return openEditModal2()" />
-                <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addModalLabel">Aggiungi Prodotto</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+                    <asp:Button runat="server" CommandName="Add" CssClass="btn btn-info" Text="Aggiungi prodotto" OnClientClick="return openEditModal2()" />
+                    <asp:Button ID="Button1" runat="server" Text="Esci" OnClick="BtnLogout_Click" CssClass="btn btn-warning ml-3 text-white" />
+                    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addModalLabel">Aggiungi Prodotto</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
 
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="txtNomeAdd">Nome:</label>
-                                    <asp:TextBox ID="txtNomeAdd" runat="server" CssClass="form-control"></asp:TextBox>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="txtNomeAdd">Nome:</label>
+                                        <asp:TextBox ID="txtNomeAdd" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtDescrizioneAdd">Descrizione:</label>
+                                        <asp:TextBox ID="txtDescrizioneAdd" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtImmagineAdd">Immagine:</label>
+                                        <asp:TextBox ID="txtImmagineAdd" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="txtDescrizioneAdd">Descrizione:</label>
-                                    <asp:TextBox ID="txtDescrizioneAdd" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                                <div class="form-group">
-                                    <label for="txtImmagineAdd">Immagine:</label>
-                                    <asp:TextBox ID="txtImmagineAdd" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
 
-                            <div class="modal-footer">
-                                <asp:Button ID="btnAddProduct" runat="server" Text="Aggiungi" OnClick="btn_AddProduct" CssClass="btn btn-success" />
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                                <div class="modal-footer">
+                                    <asp:Button ID="btnAddProduct" runat="server" Text="Aggiungi" OnClick="btn_AddProduct" CssClass="btn btn-success" />
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                    </div>
 
             </div>
             <asp:GridView ID="GridViewProducts" runat="server" AutoGenerateColumns="False" DataKeyNames="idprodotto"

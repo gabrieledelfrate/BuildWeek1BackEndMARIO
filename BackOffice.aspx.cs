@@ -22,6 +22,10 @@ namespace MARIO
                 BindProductData();
             }
         }
+        protected void BtnLogout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
 
         private void BindProductData()
         {
