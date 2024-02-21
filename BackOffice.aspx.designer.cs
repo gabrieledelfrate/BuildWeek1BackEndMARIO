@@ -33,6 +33,15 @@ namespace MARIO
         protected global::System.Web.UI.WebControls.TextBox txtNomeAdd;
 
         /// <summary>
+        /// Controllo txtPrezzoAdd.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPrezzoAdd;
+
+        /// <summary>
         /// Controllo txtDescrizioneAdd.
         /// </summary>
         /// <remarks>

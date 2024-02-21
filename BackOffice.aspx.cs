@@ -29,7 +29,7 @@ namespace MARIO
             {
                 DBConn.conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT idprodotto, nome, descrizione, immagine FROM Prodotti", DBConn.conn);
+                SqlCommand cmd = new SqlCommand("SELECT idprodotto, nome, prezzo, descrizione, immagine FROM Prodotti", DBConn.conn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -59,17 +59,20 @@ namespace MARIO
             {
                 int productId = Convert.ToInt32(GridViewProducts.DataKeys[e.RowIndex].Values["idprodotto"]);
                 string nome = ((TextBox)GridViewProducts.Rows[e.RowIndex].FindControl("txtNomeEdit")).Text;
+                decimal prezzo = Convert.ToDecimal(((TextBox)GridViewProducts.Rows[e.RowIndex].FindControl("txtPrezzoEdit")).Text);
                 string descrizione = ((TextBox)GridViewProducts.Rows[e.RowIndex].FindControl("txtDescrizioneEdit")).Text;
                 string immagine = ((TextBox)GridViewProducts.Rows[e.RowIndex].FindControl("txtImmagineEdit")).Text;
 
                 DBConn.conn.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Prodotti SET nome = @nome, descrizione = @descrizione, immagine = @immagine WHERE idprodotto = @idprodotto", DBConn.conn);
+                SqlCommand cmd = new SqlCommand("UPDATE Prodotti SET nome = @nome, prezzo = @prezzo, descrizione = @descrizione, immagine = @immagine WHERE idprodotto = @idprodotto", DBConn.conn);
                 cmd.Parameters.AddWithValue("@nome", nome);
+                cmd.Parameters.AddWithValue("@prezzo", prezzo);
                 cmd.Parameters.AddWithValue("@descrizione", descrizione);
                 cmd.Parameters.AddWithValue("@idprodotto", productId);
                 cmd.Parameters.AddWithValue("@immagine", immagine);
                 cmd.ExecuteNonQuery();
+
             }
             catch (Exception ex)
             {
@@ -137,6 +140,7 @@ namespace MARIO
             try
             {
                 string nome = txtNomeAdd.Text;
+                decimal prezzo = Convert.ToDecimal(txtPrezzoAdd.Text);
                 string descrizione = txtDescrizioneAdd.Text;
                 string immagine = txtImmagineAdd.Text;
 
@@ -144,8 +148,9 @@ namespace MARIO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Prodotti (nome, descrizione, immagine) VALUES (@nome, @descrizione, @immagine)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO Prodotti (nome, prezzo, descrizione, immagine) VALUES (@nome, @prezzo, @descrizione, @immagine)", conn);  
                     cmd.Parameters.AddWithValue("@nome", nome);
+                    cmd.Parameters.AddWithValue("@prezzo", prezzo);
                     cmd.Parameters.AddWithValue("@descrizione", descrizione);
                     cmd.Parameters.AddWithValue("@immagine", immagine);
                     cmd.ExecuteNonQuery();
