@@ -73,9 +73,12 @@ namespace MARIO
                 cmd.Parameters.AddWithValue("@immagine", immagine);
                 cmd.ExecuteNonQuery();
 
+                ScriptManager.RegisterStartupScript(this, GetType(), "showUpdateSuccessToast", "$('.toast-update-success').toast('show');", true);
+
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showUpdateErrorToast", "$('.toast-update-error').toast('show');", true);
                 Response.Write(ex.ToString());
             }
             finally
@@ -83,6 +86,22 @@ namespace MARIO
                 DBConn.conn.Close();
                 GridViewProducts.EditIndex = -1;
                 BindProductData();
+            }
+        }
+        protected void GridViewProducts_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewProducts.PageIndex = e.NewPageIndex;
+            BindProductData();
+        }
+        protected void GridViewProducts_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState & DataControlRowState.Edit) > 0)
+            {
+                LinkButton btnEdit = (LinkButton)e.Row.FindControl("btnEdit");
+                if (btnEdit != null)
+                {
+                    btnEdit.OnClientClick = "openEditModal(); return false;";
+                }
             }
         }
 
@@ -106,10 +125,13 @@ namespace MARIO
                     SqlCommand cmd = new SqlCommand("DELETE FROM Prodotti WHERE idprodotto = @idprodotto", conn);
                     cmd.Parameters.AddWithValue("@idprodotto", productId);
                     cmd.ExecuteNonQuery();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showDeleteSuccessToast", "$('.toast-delete-success').toast('show');", true);
                 }
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showDeleteErrorToast", "$('.toast-delete-error').toast('show');", true);
                 Response.Write(ex.ToString());
             }
             finally
@@ -118,54 +140,45 @@ namespace MARIO
             }
         }
 
-
-        protected void GridViewProducts_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridViewProducts.PageIndex = e.NewPageIndex;
-            BindProductData();
-        }
-        protected void GridViewProducts_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow && (e.Row.RowState & DataControlRowState.Edit) > 0)
-            {
-                LinkButton btnEdit = (LinkButton)e.Row.FindControl("btnEdit");
-                if (btnEdit != null)
-                {
-                    btnEdit.OnClientClick = "openEditModal(); return false;";
-                }
-            }
-        }
         protected void btn_AddProduct(object sender, EventArgs e)
         {
-            try
+            if (Page.IsValid)
             {
-                string nome = txtNomeAdd.Text;
-                decimal prezzo = Convert.ToDecimal(txtPrezzoAdd.Text);
-                string descrizione = txtDescrizioneAdd.Text;
-                string immagine = txtImmagineAdd.Text;
 
-                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Collegamento"].ConnectionString))
+                try
                 {
-                    conn.Open();
+                    string nome = txtNomeAdd.Text;
+                    decimal prezzo = Convert.ToDecimal(txtPrezzoAdd.Text);
+                    string descrizione = txtDescrizioneAdd.Text;
+                    string immagine = txtImmagineAdd.Text;
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Prodotti (nome, prezzo, descrizione, immagine) VALUES (@nome, @prezzo, @descrizione, @immagine)", conn);  
-                    cmd.Parameters.AddWithValue("@nome", nome);
-                    cmd.Parameters.AddWithValue("@prezzo", prezzo);
-                    cmd.Parameters.AddWithValue("@descrizione", descrizione);
-                    cmd.Parameters.AddWithValue("@immagine", immagine);
-                    cmd.ExecuteNonQuery();
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Collegamento"].ConnectionString))
+                    {
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("INSERT INTO Prodotti (nome, prezzo, descrizione, immagine) VALUES (@nome, @prezzo, @descrizione, @immagine)", conn);
+                        cmd.Parameters.AddWithValue("@nome", nome);
+                        cmd.Parameters.AddWithValue("@prezzo", prezzo);
+                        cmd.Parameters.AddWithValue("@descrizione", descrizione);
+                        cmd.Parameters.AddWithValue("@immagine", immagine);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    txtNomeAdd.Text = string.Empty;
+                    txtPrezzoAdd.Text = string.Empty;
+                    txtDescrizioneAdd.Text = string.Empty;
+                    txtImmagineAdd.Text = string.Empty;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showAddSuccessToast", "$('.toast-add-success').toast('show');", true);
                 }
-                txtNomeAdd.Text = string.Empty;
-                txtDescrizioneAdd.Text = string.Empty;
-                txtImmagineAdd.Text = string.Empty;
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.ToString());
-            }
-            finally
-            {
-                BindProductData();
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showAddErrorToast", "$('.toast-add-error').toast('show');", true);
+                    Response.Write(ex.ToString());
+                }
+                finally
+                {
+                    BindProductData();
+                }
             }
         }
     }
