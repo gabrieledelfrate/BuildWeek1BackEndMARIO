@@ -39,14 +39,16 @@ namespace MARIO
                         insertCmd.Parameters.AddWithValue("@Email", email);
                         insertCmd.Parameters.AddWithValue("@Password", password);
                         insertCmd.ExecuteNonQuery();
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showRegistrationSuccessToast", "$('.toast-registration-success').toast('show');", true);
                     }
                 }
                 catch (Exception ex)
                 {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showRegistrationErrorToast", "$('.toast-registration-error').toast('show');", true);
                     Response.Write("Errore durante l'inserimento dei dati: " + ex.Message);
                 }
             }
-            Response.Redirect("Login.aspx");
+            ScriptManager.RegisterStartupScript(this, GetType(), "RedirectScript", "setTimeout(function(){ window.location.href = 'Login.aspx'; }, 2000);", true);
         }
     }
 }

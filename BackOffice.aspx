@@ -163,53 +163,54 @@
                 Qualcosa è andato storto.
             </div>
         </div>
-        <div class="toast toast-delete-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
-    <div class="toast-header bg-success text-white fw-bold">
-        <strong class="mr-auto">Successo</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body bg-success text-white py-4">
-        Prodotto eliminato con successo dal database.
-    </div>
-</div>
 
-<div class="toast toast-delete-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
-    <div class="toast-header bg-danger text-white fw-bold">
-        <strong class="mr-auto">Errore</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body bg-danger text-white py-4">
-        Errore durante l'eliminazione del prodotto.
-    </div>
-</div>
+        <div class="toast toast-delete-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
+            <div class="toast-header bg-success text-white fw-bold">
+                <strong class="mr-auto">Successo</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body bg-success text-white py-4">
+                Prodotto eliminato con successo dal database.
+            </div>
+        </div>
+
+        <div class="toast toast-delete-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
+            <div class="toast-header bg-danger text-white fw-bold">
+                <strong class="mr-auto">Errore</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body bg-danger text-white py-4">
+                Errore durante l'eliminazione del prodotto.
+            </div>
+        </div>
 
         <div class="toast toast-update-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
-    <div class="toast-header bg-success text-white fw-bold">
-        <strong class="mr-auto">Successo</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body bg-success text-white py-4">
-        Prodotto del database aggiornato con successo.
-    </div>
-</div>
+            <div class="toast-header bg-success text-white fw-bold">
+                <strong class="mr-auto">Successo</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body bg-success text-white py-4">
+                Prodotto del database aggiornato con successo.
+            </div>
+        </div>
 
-<div class="toast toast-update-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
-    <div class="toast-header bg-danger text-white fw-bold">
-        <strong class="mr-auto">Errore</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body bg-danger text-white py-4">
-        Errore durante l'aggiornamento del prodotto.
-    </div>
-</div>
+        <div class="toast toast-update-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
+            <div class="toast-header bg-danger text-white fw-bold">
+                <strong class="mr-auto">Errore</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body bg-danger text-white py-4">
+                Errore durante l'aggiornamento del prodotto.
+            </div>
+        </div>
     </form>
 </body>
 </html>
