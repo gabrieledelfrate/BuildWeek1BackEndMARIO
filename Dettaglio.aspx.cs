@@ -57,7 +57,6 @@ namespace MARIO
                     DBConn.conn.Close();
                 }
             }
-            cartToast.Visible = true;
         }
         protected void btnAddCart_Click(object sender, EventArgs e)
         {
@@ -100,12 +99,11 @@ namespace MARIO
                 HttpCookie quantitaCookie = new HttpCookie("QuantitaSelezionata_" + ProductID, quantitaSelezionata.ToString());
                 quantitaCookie.Expires = DateTime.Now.AddMinutes(45);
                 Response.Cookies.Add(quantitaCookie);
-
-                cartToast.Visible = true;
-                Response.Redirect(Request.RawUrl);
+                ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessToast", "$('.toast-success').toast('show');", true);
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showErrorToast", "$('.toast-error').toast('show');", true);
                 Response.Write("Si è verificato un errore: " + ex.Message);
             }
         }
