@@ -44,7 +44,7 @@ namespace MARIO
                 {
                     CartItem cartItem = (CartItem)Session["ProductInfo_" + productId];
                     cartItem.Quantita = productIds.Count(item => item == productId);
-                    cartItem.Prezzo = decimal.Parse(cartItem.Prezzo.ToString("0.00", italianCulture), italianCulture);
+                    cartItem.Prezzo = decimal.Parse(cartItem.Prezzo.ToString(CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
                     cartItem.TotaleProdotto = cartItem.Prezzo * cartItem.Quantita;
                     cartItems.Add(cartItem);
                 }
