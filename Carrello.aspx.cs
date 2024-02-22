@@ -32,6 +32,11 @@ namespace MARIO
                 decimal totalPrice = items.Sum(item => item.TotaleProdotto);
                 totalPriceLabel.InnerText = totalPrice.ToString("0.00");
             }
+            else
+            {
+                // Se non ci sono prodotti nel carrello, mostra l'etichetta "Carrello vuoto"
+                lblCarrelloVuoto.Visible = true;
+            }
         }
         private List<CartItem> GetCartItems(List<int> productIds)
         {
