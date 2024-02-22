@@ -43,7 +43,8 @@ namespace MARIO
                     ttlProduct.InnerText = dataReader["nome"].ToString();
                     img.Src = dataReader["immagine"].ToString();
                     txtDescription.InnerText = dataReader["descrizione"].ToString();
-                    txtPrice.InnerText = dataReader["prezzo"].ToString() + "€";
+                    decimal prezzo = Convert.ToDecimal(dataReader["prezzo"], CultureInfo.InvariantCulture);
+                    txtPrice.InnerText = prezzo.ToString("0.00", CultureInfo.InvariantCulture) + "€";
                     dataReader.Close();
                 }                
             }

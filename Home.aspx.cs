@@ -32,10 +32,10 @@ namespace MARIO
                         content += $@" <div class=""card col-6 col-md-4 col-lg-3 ms-4 mb-3"">
                         <img class=""card-img-top h-100 w-100"" alt=""{dataReader["nome"]}"" src=""{dataReader["immagine"]}""/>
                         <div class=""card-body"">
-                        <h5 class=""card-title"">{dataReader["nome"]}</h5>
+                        <h5 class=""card-title mb-3"">{dataReader["nome"]}</h5>
                         </div>
                         <div class=""card-footer d-flex align-items-baseline justify-content-around"">
-                        <p class=""card-text d-flex"">{dataReader["prezzo"]}€</p>
+                        <h4 class=""card-text d-flex"">{dataReader["prezzo"]}€</h4>
                         <a href=""Dettaglio.aspx?product={dataReader["idprodotto"]}"" class=""btn btn-primary"">Dettagli</a>
                         </div>
                         </div>";

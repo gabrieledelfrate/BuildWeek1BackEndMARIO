@@ -33,6 +33,15 @@ namespace MARIO
         protected global::System.Web.UI.HtmlControls.HtmlImage img;
 
         /// <summary>
+        /// Controllo txtDescription.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtDescription;
+
+        /// <summary>
         /// Controllo txtPrice.
         /// </summary>
         /// <remarks>
@@ -58,15 +67,6 @@ namespace MARIO
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlQuantita;
-
-        /// <summary>
-        /// Controllo txtDescription.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtDescription;
 
         /// <summary>
         /// Controllo lblMessage.

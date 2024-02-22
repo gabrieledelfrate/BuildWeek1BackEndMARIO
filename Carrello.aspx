@@ -12,11 +12,11 @@
                         <div class="col-md-3">
                             <img src='<%# Eval("Immagine") %>' class="img-fluid" alt='<%# Eval("Nome") %>' />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <div class="card-body">
-                                <h5 class="card-title"><%# Eval("Nome") %></h5>
-                                <p class="card-text">Prezzo: <%# Eval("Prezzo") %>€</p>
-                                <asp:DropDownList ID="ddlQuantitaCarrello1" runat="server" CssClass="form-select" AutoPostBack="true" 
+                                <h4 class="card-title"><%# Eval("Nome") %></h4>
+                                <p class="card-text fw-bold">Prezzo: <%# Eval("Prezzo") %>€</p>
+                                <asp:DropDownList ID="ddlQuantitaCarrello1" runat="server" CssClass="form-select w-50" AutoPostBack="true" 
                  OnSelectedIndexChanged="DdlQuantitaCarrello1_SelectedIndexChanged"
                  data-product-id='<%# Eval("ProductId") %>'>
                                      <asp:ListItem Value="1">1</asp:ListItem>
@@ -30,14 +30,12 @@
                                      <asp:ListItem Value="9">9</asp:ListItem>
                                      <asp:ListItem Value="10">10</asp:ListItem>
                                </asp:DropDownList>                            
-                               <asp:Button ID="btnRemoveFromCart" runat="server" Text="Rimuovine uno" CssClass="btn btn-danger"
-                                           CommandName="RemoveFromCart" CommandArgument='<%# Eval("ProductId") %>' OnCommand="btnRemoveFromCart_Click" />
-                               <asp:Button ID="btnRemoveAllFromCart" runat="server" Text="Rimuovi completamente dal Carrello" CssClass="btn btn-danger"
+                               <asp:Button ID="btnRemoveAllFromCart" runat="server" Text="Rimuovi dal Carrello" CssClass="btn btn-danger mt-2"
                                            CommandName="RemoveAllFromCart" CommandArgument='<%# Eval("ProductId") %>' OnCommand="btnRemoveFromCart_Click" />
                             </div>
                         </div>
-                        <div class="col-md-3 text-end">
-                            <p class="card-text">Quantità: <%# Eval("Quantita") %></p>
+                        <div class="col-md-2 mt-3">
+                            <p class="card-text">Quantità: <%# Eval("Quantita") %> pz. </p>
                             <p class="card-text">Totale: <%# Eval("TotaleProdotto") %>€</p>                            
                         </div>
                     </div>
@@ -45,8 +43,8 @@
             </ItemTemplate>
         </asp:Repeater>
 
-        <div class="text-end">
-            <p class="lead">Prezzo totale: <span id="totalPriceLabel" runat="server"></span>€</p>
+        <div class="text-end me-3">
+            <p class="lead fw-bold">Prezzo totale: <span id="totalPriceLabel" runat="server"></span>€</p>
             <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
             <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary" OnClick="btnCheckout_Click" />
         </div>
