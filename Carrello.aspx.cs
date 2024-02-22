@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -157,11 +159,41 @@ namespace MARIO
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
-        {            
-            Session["idprodotto"] = null;
-            BindCartItems();
-            ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
+        {
+            if (Session["idprodotto"] != null)
+            {
+                List<int> cartProductIds = (List<int>)Session["idprodotto"];
+                List<CartItem> cartItems = GetCartItems(cartProductIds);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["Collegamento"].ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string elencoProdotti = string.Join(",", cartProductIds);
+
+                    string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
+                                         "VALUES (@ElencoProdotti, (SELECT userid FROM Cliente WHERE email = @Email))";
+                    
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@ElencoProdotti", elencoProdotti);
+                        command.Parameters.AddWithValue("@Email", "LaTuaEmail");
+                        
+                        command.ExecuteNonQuery();
+                    }
+
+                    Session["idprodotto"] = null;
+                    BindCartItems();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
+                }
+            }
         }
+
+
+
         public class CartItem
         {
             public int ProductId { get; set; }
