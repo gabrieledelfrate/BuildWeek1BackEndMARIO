@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MARIO.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registrazione.aspx.cs" Inherits="MARIO.Registrazione" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login</title>
+    <title>Registrazione</title>
     <style>
         * {
             padding: 0;
@@ -25,7 +25,7 @@
             position: relative;
             padding: 60px 15px;
             width: 370px;
-            height: 480px;
+            height: 400px;
             background: #E60A14;
             overflow: hidden;
             box-shadow: 0px 0px 10px 0px rgb(116, 119, 114);
@@ -75,24 +75,6 @@
             width: 100%;
             padding: 12px;
             outline: none;
-            background: #E60A14;
-            border: none;
-            font-size: 18px;
-            border-radius: 10px;
-            transition: 0.4s;
-        }
-
-            .btn:hover {
-                background: #FF9C2A;
-            }
-
-        .btnRegister {
-            cursor: pointer;
-            color: white;
-            margin-top: 25px;
-            width: 100%;
-            padding: 12px;
-            outline: none;
             background: #0050AA;
             border: none;
             font-size: 18px;
@@ -100,32 +82,59 @@
             transition: 0.4s;
         }
 
-            .btnRegister:hover {
+            .btn:hover {
                 background: #35A6FF;
             }
 
-        p {
-            text-align:center;
-            color: #0050AA;
-            margin-top: 20px;
+        .form span {
+            position: absolute;
+            height: 50%;
+            width: 50%;
         }
 
-        
+            .form span:nth-child(2n+1) {
+                background-color: white;
+                top: 0;
+                left: -48%;
+                animation: 5s span1 infinite linear;
+                animation-delay: 1s;
+            }
+
+            .form span:nth-child(2) {
+                background-color: white;
+                bottom: 0;
+                right: -48%;
+                animation: 5s span2 infinite linear;
+            }
+
+            .form span:nth-child(3) {
+                background-color: white;
+                right: -48%;
+                top: 0px;
+                animation: 5s span3 infinite linear;
+            }
+
+            .form span:nth-child(4) {
+                background-color: white;
+                bottom: 0;
+                right: -48%;
+                animation: 5s span4 infinite linear;
+                animation-delay: 1s;
+            }
+            p {
+                margin-top: 15px;
+                color: #0050AA;
+            }
     </style>
 </head>
 <body>
     <form id="form1" runat="server" class="form">
         <div class="form-inner">
-            <h2>LOGIN</h2>
+            <h2>REGISTRATI</h2>
             <div class="content">
-                <asp:TextBox CssClass="input" ID="txtUsername" runat="server" placeholder="Email"></asp:TextBox>
+                <asp:TextBox CssClass="input" ID="txtEmail" runat="server" placeholder="Email"></asp:TextBox>
                 <asp:TextBox CssClass="input" ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
-                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="BtnLogin_Click" CssClass="btn" />
-                <div>
-                    <asp:Label ID="lblErrorMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
-                    <p>Non sei ancora registrato?</p>
-                    <asp:Button ID="btnRegister" runat="server" Text="Registrati" OnClick="BtnRegistrati_Click" CssClass="btnRegister" />
-                </div>
+                <asp:Button ID="btnRegister" runat="server" Text="Registrati" OnClick="BtnSave_Click" CssClass="btn" />
             </div>
         </div>
     </form>
