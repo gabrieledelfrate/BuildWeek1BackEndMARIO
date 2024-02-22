@@ -17,8 +17,7 @@ namespace MARIO
     {
         private string ProductID;
         protected void Page_Load(object sender, EventArgs e)
-        {           
-
+        {       
             if (!IsPostBack)
             {
                 Session["QuantitaSelezionata"] = 1; 
@@ -110,9 +109,6 @@ namespace MARIO
                 Response.Write("Si è verificato un errore: " + ex.Message);
             }
         }
-
-
-
         protected void ddlQuantita_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -128,5 +124,3 @@ namespace MARIO
         }
     }
 }
-
-

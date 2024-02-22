@@ -107,8 +107,6 @@ namespace MARIO
                             ddlQuantitaCarrello1.SelectedValue = quantitaSelezionata.ToString();
                         }
                     }
-
-                    // Imposta la selezione del DropDownList sulla quantità effettiva nel carrello
                     ddlQuantitaCarrello1.SelectedValue = ((CartItem)e.Item.DataItem).Quantita.ToString();
                 }
             }
@@ -122,7 +120,7 @@ namespace MARIO
                 productIds.RemoveAll(id => id == productId);
                 productIds.AddRange(Enumerable.Repeat(productId, newQuantity));
                 Session["idprodotto"] = productIds;
-                BindCartItems();  // Aggiorna il carrello dopo l'aggiornamento della quantità
+                BindCartItems();  
             }
         }
 
