@@ -39,15 +39,6 @@
             </asp:DropDownList>
         </div>
     </div>
-
-<div id="cartToast" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 10000" runat="server" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-        <div class="toast-body">
-            Prodotto aggiunto correttamente al carrello
-        </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"></button>
-    </div>
-
 <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; min-height: 200px; z-index: 1000;">
     <div style="position: absolute; top: 0; right: 0;">
          <div class="toast toast-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">

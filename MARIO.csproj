@@ -73,6 +73,7 @@
     <Content Include="Images\piccol_logo.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Registrazione.aspx" />
+    <Content Include="StoricoOrdini.aspx" />
     <Content Include="StyleCSS.css" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="Registrazione.aspx.designer.cs">
       <DependentUpon>Registrazione.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StoricoOrdini.aspx.cs">
+      <DependentUpon>StoricoOrdini.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StoricoOrdini.aspx.designer.cs">
+      <DependentUpon>StoricoOrdini.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
