@@ -47,15 +47,42 @@
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"></button>
     </div>
-</div>
 
-<div id="errorToast" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 10000" runat="server" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-        <div class="toast-body">
-            Qualcosa è andato storto!
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; min-height: 200px; z-index: 1000;">
+    <div style="position: absolute; top: 0; right: 0;">
+         <div class="toast toast-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+                <strong class="mr-auto">Successo</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Prodotto aggiunto al carrello con successo!
+            </div>
+        </div>
+        <div class="toast toast-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+                <strong class="mr-auto">Errore</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Si ï¿½ verificato un errore durante l'aggiunta del prodotto al carrello.
+            </div>
+
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
 </div>
 
+    <script>
+        $(document).ready(function () {
+            $('#btnAddCart').click(function () {
+                $('.toast').toast('show');
+            });
+        });
+    </script>
 </asp:Content>
+

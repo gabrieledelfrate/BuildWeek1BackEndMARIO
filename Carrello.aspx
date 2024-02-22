@@ -44,12 +44,38 @@
                     </ItemTemplate>
                 </asp:Repeater>
 
-                <div class="text-end me-3">
-                    <p class="lead fw-bold">Prezzo totale: <span id="totalPriceLabel" runat="server"></span>€</p>
-                    <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
-                    <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary" OnClick="btnCheckout_Click" />
-                </div>
+
+        <div class="text-end">
+            <p class="lead">Prezzo totale: <span id="totalPriceLabel" runat="server"></span>€</p>
+            <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
+            <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary" OnClick="btnCheckout_Click" />
+        </div>
+    </div>
+        <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <span id="toastMessage"></span>
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+      </ContentTemplate>
+</asp:UpdatePanel>  
+    <script>
+        function showToast(message) {
+            var toast = new bootstrap.Toast(document.getElementById('myToast'));
+            document.getElementById('toastMessage').innerText = message;
+            toast.show();
+        }
+
+        function showEmptyCartToast() {
+            showToast('Carrello svuotato');
+        }
+
+        function showCheckoutToast() {
+            showToast('Acquisto effettuato');
+        }
+    </script>
+
 </asp:Content>
+

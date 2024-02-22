@@ -17,6 +17,7 @@ namespace MARIO
     {
         private string ProductID;
         protected void Page_Load(object sender, EventArgs e)
+
         {
             if (Session["UserID"] == null)
             {
@@ -94,8 +95,7 @@ namespace MARIO
                         Nome = ttlProduct.InnerText,
                         Prezzo = decimal.Parse(txtPrice.InnerText.Replace("€", ""), CultureInfo.InvariantCulture),
                         Immagine = img.Src
-                    };
-
+                    };                                        
                     Session["ProductInfo_" + prodID] = cartItem;
                 }
                
@@ -106,16 +106,20 @@ namespace MARIO
                 quantitaCookie.Expires = DateTime.Now.AddMinutes(45);
                 Response.Cookies.Add(quantitaCookie);
 
-                Response.Redirect(Request.RawUrl);
+                int cartCount = (Session["CartCount"] != null) ? (int)Session["CartCount"] : 0;
+                cartCount++;
+                Session["CartCount"] = cartCount;
+
+                ((MARIO.MasterPage)Master).UpdateCartCount();
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessToast", "$('.toast-success').toast('show');", true);
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showErrorToast", "$('.toast-error').toast('show');", true);
                 Response.Write("Si è verificato un errore: " + ex.Message);
             }
         }
-
-
-
         protected void ddlQuantita_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -131,5 +135,3 @@ namespace MARIO
         }
     }
 }
-
-
