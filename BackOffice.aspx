@@ -40,6 +40,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
+
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -63,10 +64,12 @@
                                     <asp:Button ID="btnAddProduct" runat="server" Text="Aggiungi" OnClick="btn_AddProduct" CssClass="btn btn-success" />
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <asp:GridView ID="GridViewProducts" runat="server" AutoGenerateColumns="False" DataKeyNames="idprodotto"
