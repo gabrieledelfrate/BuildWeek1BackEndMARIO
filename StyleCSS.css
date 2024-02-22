@@ -1,4 +1,12 @@
-﻿
+﻿.edit-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    z-index: 1000;
+}
 footer {
     margin-top: 150px !important;
     background: rgb(0,99,174);

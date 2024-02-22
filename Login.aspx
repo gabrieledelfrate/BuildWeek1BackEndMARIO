@@ -4,7 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Workbench:SCAN@6&display=swap" rel="stylesheet" />
     <style>
         * {
             padding: 0;
@@ -14,7 +20,6 @@
 
         body {
             font-family: sans-serif;
-            display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
@@ -22,12 +27,13 @@
         }
 
         .form {
-            position: relative;
+            position: absolute;
+            top: 22%;
+            right: 39.5%;
             padding: 60px 15px;
             width: 370px;
             height: 480px;
             background: #E60A14;
-            overflow: hidden;
             box-shadow: 0px 0px 10px 0px rgb(116, 119, 114);
             border-radius: 5px;
         }
@@ -71,7 +77,7 @@
         .btn {
             cursor: pointer;
             color: white;
-            margin-top: 40px;
+            margin-top: 30px;
             width: 100%;
             padding: 12px;
             outline: none;
@@ -89,8 +95,8 @@
         .btnRegister {
             cursor: pointer;
             color: white;
-            margin-top: 25px;
             width: 100%;
+            margin-bottom: 20px;
             padding: 12px;
             outline: none;
             background: #0050AA;
@@ -105,15 +111,75 @@
             }
 
         p {
-            text-align:center;
+            text-align: center;
             color: #0050AA;
             margin-top: 20px;
         }
 
-        
+        .logmar {
+            margin-top: 150px;
+        }
+
+        .animate-charcter {
+            text-transform: uppercase;
+            background-image: linear-gradient( -225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100% );
+            background-size: auto auto;
+            background-clip: border-box;
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textclip 2s linear infinite;
+            display: inline-block;
+            font-size: 190px;
+            font-family: "Workbench", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-variation-settings: "BLED" 0, "SCAN" 6;
+            letter-spacing: 6px;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="row mb-5">
+        <div class="col-3 d-flex justify-content-center">
+            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter workbench">AL </h2>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">PICCOL</h2>
+        </div>
+        <div class="col-3 d-flex justify-content-center">
+            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">I</h2>
+        </div>
+    </div>
+
+    <div class="row my-5 d-flex justify-content-evenly">
+        <div class="col-6 d-flex justify-content-center">
+            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">PREZZI </h2>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">VANNO</h2>
+        </div>
+
+    </div>
+
+    <div class="row logmar">
+        <div class="col-12 d-flex justify-content-center">
+            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">A PICCO-L</h2>
+        </div>
+
+    </div>
+
+
     <form id="form1" runat="server" class="form">
         <div class="form-inner">
             <h2>LOGIN</h2>

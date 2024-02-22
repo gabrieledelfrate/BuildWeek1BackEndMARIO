@@ -24,6 +24,15 @@ namespace MARIO
         protected global::System.Web.UI.UpdatePanel updatePanel;
 
         /// <summary>
+        /// Controllo lblCarrelloVuoto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCarrelloVuoto;
+
+        /// <summary>
         /// Controllo rptCartItemss.
         /// </summary>
         /// <remarks>

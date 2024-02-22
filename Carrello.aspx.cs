@@ -14,6 +14,10 @@ namespace MARIO
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserID"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
             if (!IsPostBack)
             {
                 BindCartItems();
@@ -30,6 +34,11 @@ namespace MARIO
                 rptCartItemss.DataBind();
                 decimal totalPrice = items.Sum(item => item.TotaleProdotto);
                 totalPriceLabel.InnerText = totalPrice.ToString("0.00");
+            }
+            else
+            {
+                // Se non ci sono prodotti nel carrello, mostra l'etichetta "Carrello vuoto"
+                lblCarrelloVuoto.Visible = true;
             }
         }
         private List<CartItem> GetCartItems(List<int> productIds)
@@ -123,7 +132,9 @@ namespace MARIO
                 productIds.RemoveAll(id => id == productId);
                 productIds.AddRange(Enumerable.Repeat(productId, newQuantity));
                 Session["idprodotto"] = productIds;
+
                 BindCartItems();  
+
             }
         }
 

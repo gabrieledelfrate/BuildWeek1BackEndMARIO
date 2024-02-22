@@ -4,7 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Registrazione</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Registrazione Piccol</title>
     <style>
         * {
             padding: 0;
@@ -14,7 +17,6 @@
 
         body {
             font-family: sans-serif;
-            display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
@@ -22,12 +24,13 @@
         }
 
         .form {
-            position: relative;
+            position: absolute;
+            top: 22%;
+            right: 39.5%;
             padding: 60px 15px;
             width: 370px;
-            height: 400px;
+            height: 550px;
             background: #E60A14;
-            overflow: hidden;
             box-shadow: 0px 0px 10px 0px rgb(116, 119, 114);
             border-radius: 5px;
         }
@@ -71,8 +74,27 @@
         .btn {
             cursor: pointer;
             color: white;
-            margin-top: 40px;
+            margin-top: 20px;
             width: 100%;
+            padding: 12px;
+            outline: none;
+            background: #E60A14;
+            border: none;
+            font-size: 18px;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+            .btn:hover {
+                background: #FF9C2A;
+            }
+
+        .btnRegister {
+            cursor: pointer;
+            color: white;
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 10px;
             padding: 12px;
             outline: none;
             background: #0050AA;
@@ -82,61 +104,54 @@
             transition: 0.4s;
         }
 
-            .btn:hover {
+            .btnRegister:hover {
                 background: #35A6FF;
             }
 
-        .form span {
-            position: absolute;
-            height: 50%;
-            width: 50%;
+        p {
+            text-align: center;
+            color: #0050AA;
+            margin-top: 20px;
         }
-
-            .form span:nth-child(2n+1) {
-                background-color: white;
-                top: 0;
-                left: -48%;
-                animation: 5s span1 infinite linear;
-                animation-delay: 1s;
-            }
-
-            .form span:nth-child(2) {
-                background-color: white;
-                bottom: 0;
-                right: -48%;
-                animation: 5s span2 infinite linear;
-            }
-
-            .form span:nth-child(3) {
-                background-color: white;
-                right: -48%;
-                top: 0px;
-                animation: 5s span3 infinite linear;
-            }
-
-            .form span:nth-child(4) {
-                background-color: white;
-                bottom: 0;
-                right: -48%;
-                animation: 5s span4 infinite linear;
-                animation-delay: 1s;
-            }
-            p {
-                margin-top: 15px;
-                color: #0050AA;
-            }
     </style>
 </head>
 <body>
     <form id="form1" runat="server" class="form">
         <div class="form-inner">
             <h2>REGISTRATI</h2>
+                        <h2>AL PICCOL</h2>
             <div class="content">
                 <asp:TextBox CssClass="input" ID="txtEmail" runat="server" placeholder="Email"></asp:TextBox>
                 <asp:TextBox CssClass="input" ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
                 <asp:Button ID="btnRegister" runat="server" Text="Registrati" OnClick="BtnSave_Click" CssClass="btn" />
+                <asp:Button ID="btnGoToHome" runat="server" Text="Torna al Login" CssClass="btnRegister" PostBackUrl="~/Login.aspx" />
             </div>
         </div>
+
+                <div class="toast toast-registration-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
+            <div class="toast-header bg-success text-white fw-bold">
+                <strong class="mr-auto">Successo</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body bg-success text-white py-4">
+                Registrazione effettuata con successo
+            </div>
+        </div>
+
+        <div class="toast toast-registration-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
+            <div class="toast-header bg-danger text-white fw-bold">
+                <strong class="mr-auto">Errore</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body bg-danger text-white py-4">
+                Qualcosa è andato storto.
+            </div>
+        </div>
+
     </form>
 </body>
 </html>
