@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <asp:Button ID="btnAddProduct" runat="server" Text="Aggiungi" OnClick="btn_AddProduct" CssClass="btn btn-success" />
+                                    <asp:Button ID="btnAddProduct" runat="server" Text="Aggiungi" OnClick="Btn_AddProduct" CssClass="btn btn-success" />
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
                                 </div>
                             </div>

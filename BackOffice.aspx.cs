@@ -136,7 +136,7 @@ namespace MARIO
                 }
             }
         }
-        protected void btn_AddProduct(object sender, EventArgs e)
+        protected void Btn_AddProduct(object sender, EventArgs e)
         {
             try
             {
