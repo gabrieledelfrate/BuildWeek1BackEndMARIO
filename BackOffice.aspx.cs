@@ -17,6 +17,10 @@ namespace MARIO
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserID"] == null)
+            {
+                Response.Redirect("Login.aspx"); // Reindirizza alla pagina di login se l'utente non è autenticato
+            }
             if (!IsPostBack)
             {
                 BindProductData();

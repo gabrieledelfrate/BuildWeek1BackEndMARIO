@@ -26,6 +26,8 @@ namespace MARIO
 
             if (username == "admin" && password == "admin")
             {
+                Session["UserID"] = username; // Imposta la sessione per indicare che l'utente è autenticato
+                Session["IsAdmin"] = true; // Imposta la sessione per indicare che l'utente è un admin
                 Response.Redirect("BackOffice.aspx");
             }
             else
@@ -44,6 +46,7 @@ namespace MARIO
                         int count = (int)cmd.ExecuteScalar();
                         if (count > 0)
                         {
+                            Session["UserID"] = username; // Imposta la sessione per indicare che l'utente è autenticato
                             Response.Redirect("Home.aspx");
                         }
                         else
