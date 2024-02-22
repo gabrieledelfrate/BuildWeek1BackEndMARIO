@@ -63,7 +63,6 @@ namespace MARIO
                     DBConn.conn.Close();
                 }
             }
-            cartToast.Visible = true;
         }
         protected void btnAddCart_Click(object sender, EventArgs e)
         {
@@ -107,7 +106,6 @@ namespace MARIO
                 quantitaCookie.Expires = DateTime.Now.AddMinutes(45);
                 Response.Cookies.Add(quantitaCookie);
 
-                cartToast.Visible = true;
                 Response.Redirect(Request.RawUrl);
             }
             catch (Exception ex)
