@@ -13,7 +13,7 @@ namespace MARIO
         {
             if (Session["UserID"] == null)
             {
-                Response.Redirect("Login.aspx"); // Reindirizza alla pagina di login se l'utente non è autenticato
+                Response.Redirect("Login.aspx");
             }
             if (!IsPostBack)
             {
@@ -111,8 +111,6 @@ namespace MARIO
                             ddlQuantitaCarrello1.SelectedValue = quantitaSelezionata.ToString();
                         }
                     }
-
-                    // Imposta la selezione del DropDownList sulla quantità effettiva nel carrello
                     ddlQuantitaCarrello1.SelectedValue = ((CartItem)e.Item.DataItem).Quantita.ToString();
                 }
             }
@@ -126,7 +124,7 @@ namespace MARIO
                 productIds.RemoveAll(id => id == productId);
                 productIds.AddRange(Enumerable.Repeat(productId, newQuantity));
                 Session["idprodotto"] = productIds;
-                BindCartItems();  // Aggiorna il carrello dopo l'aggiornamento della quantità
+                BindCartItems();
             }
         }
 

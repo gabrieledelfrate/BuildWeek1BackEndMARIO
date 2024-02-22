@@ -20,7 +20,7 @@ namespace MARIO
         {
             if (Session["UserID"] == null)
             {
-                Response.Redirect("Login.aspx"); // Reindirizza alla pagina di login se l'utente non è autenticato
+                Response.Redirect("Login.aspx");
             }
 
             if (!IsPostBack)
