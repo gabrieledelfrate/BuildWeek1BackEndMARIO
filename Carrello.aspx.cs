@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace MARIO
@@ -129,7 +132,9 @@ namespace MARIO
                 productIds.RemoveAll(id => id == productId);
                 productIds.AddRange(Enumerable.Repeat(productId, newQuantity));
                 Session["idprodotto"] = productIds;
-                BindCartItems();
+
+                BindCartItems();  
+
             }
         }
 
@@ -149,6 +154,7 @@ namespace MARIO
                     else if (e.CommandName == "RemoveAllFromCart")
                     {                       
                         cartProductIds.RemoveAll(id => id == productIdToRemove);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showRemoveAllToast", "showToast('Prodotto eliminato dal carrello');", true);
                     }
                     Session["idprodotto"] = cartProductIds;
                     BindCartItems();
@@ -160,13 +166,45 @@ namespace MARIO
             Session["idprodotto"] = null;
             BindCartItems();
             Response.Redirect("Carrello.aspx");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);            
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
-        {            
-            Session["idprodotto"] = null;
-            BindCartItems();
+        {
+            if (Session["idprodotto"] != null)
+            {
+                List<int> cartProductIds = (List<int>)Session["idprodotto"];
+                List<CartItem> cartItems = GetCartItems(cartProductIds);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["Collegamento"].ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string elencoProdotti = string.Join(",", cartProductIds);
+
+                    string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
+                                         "VALUES (@ElencoProdotti, (SELECT userid FROM Cliente WHERE email = @Email))";
+                    
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@ElencoProdotti", elencoProdotti);
+                        command.Parameters.AddWithValue("@Email", "LaTuaEmail");
+                        
+                        command.ExecuteNonQuery();
+                    }
+
+                    Session["idprodotto"] = null;
+                    BindCartItems();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
+                }
+            }
         }
+
+
+
         public class CartItem
         {
             public int ProductId { get; set; }

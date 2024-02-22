@@ -9,6 +9,29 @@ namespace MARIO
 {
     public class MasterPage : System.Web.UI.MasterPage
     {
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                UpdateCartCount();
+            }
+        }
+
+        public void UpdateCartCount()
+        {
+            Label lblCartCount = (Label)FindControl("lblCartCount");
+
+            if (Session["CartCount"] != null)
+            {
+                int cartCount = Convert.ToInt32(Session["CartCount"]);
+                lblCartCount.Text = cartCount > 0 ? cartCount.ToString() : string.Empty;
+            }
+        }
+
+
+
         protected Button btnLogout;
 
         protected void btnLogout_Click(object sender, EventArgs e)
