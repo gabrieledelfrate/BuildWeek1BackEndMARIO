@@ -44,7 +44,7 @@
                         <a class="nav-link" href="Carrello.aspx">Carrello</a>
                     </li>
                 </ul>
-
+                <asp:Label ID="lblCartCount" runat="server" CssClass="cart-count"></asp:Label>
                 <asp:LoginView ID="LoginView1" runat="server">
                     <AnonymousTemplate>
                         <ul class="mb-0 me-5">

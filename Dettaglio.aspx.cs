@@ -99,6 +99,13 @@ namespace MARIO
                 HttpCookie quantitaCookie = new HttpCookie("QuantitaSelezionata_" + ProductID, quantitaSelezionata.ToString());
                 quantitaCookie.Expires = DateTime.Now.AddMinutes(45);
                 Response.Cookies.Add(quantitaCookie);
+
+                int cartCount = (Session["CartCount"] != null) ? (int)Session["CartCount"] : 0;
+                cartCount++;
+                Session["CartCount"] = cartCount;
+
+                ((MARIO.MasterPage)Master).UpdateCartCount();
+
                 ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessToast", "$('.toast-success').toast('show');", true);
             }
             catch (Exception ex)
