@@ -69,7 +69,7 @@ namespace MARIO
         protected global::System.Web.UI.WebControls.DropDownList ddlQuantita;
 
         /// <summary>
-        /// Controllo lblMessage.
+        /// Controllo errorToast.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
