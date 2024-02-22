@@ -51,6 +51,30 @@
             <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary" OnClick="btnCheckout_Click" />
         </div>
     </div>
+        <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <span id="toastMessage"></span>
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
       </ContentTemplate>
 </asp:UpdatePanel>  
+    <script>
+        function showToast(message) {
+            var toast = new bootstrap.Toast(document.getElementById('myToast'));
+            document.getElementById('toastMessage').innerText = message;
+            toast.show();
+        }
+
+        function showEmptyCartToast() {
+            showToast('Carrello svuotato');
+        }
+
+        function showCheckoutToast() {
+            showToast('Acquisto effettuato');
+        }
+    </script>
+
 </asp:Content>

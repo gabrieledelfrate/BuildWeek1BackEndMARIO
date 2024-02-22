@@ -30,12 +30,9 @@
     <div class="container-lg m-auto mt-5">
         <asp:Literal ID="lblMessage" runat="server"></asp:Literal>
     </div>
-  <!-- Aggiungi questo div per il toast alla fine della tua pagina -->
 <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; min-height: 200px; z-index: 1000;">
-    <!-- Position it -->
     <div style="position: absolute; top: 0; right: 0;">
-        <!-- Then put toasts within -->
-        <div class="toast toast-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+         <div class="toast toast-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
             <div class="toast-header">
                 <strong class="mr-auto">Successo</strong>
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace MARIO
@@ -40,7 +41,7 @@ namespace MARIO
                 {
                     CartItem cartItem = (CartItem)Session["ProductInfo_" + productId];
                     cartItem.Quantita = productIds.Count(item => item == productId);
-                    cartItem.Prezzo = decimal.Parse(cartItem.Prezzo.ToString("0.00", italianCulture), italianCulture);
+                    cartItem.Prezzo = decimal.Parse(cartItem.Prezzo.ToString(CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
                     cartItem.TotaleProdotto = cartItem.Prezzo * cartItem.Quantita;
                     cartItems.Add(cartItem);
                 }
@@ -140,6 +141,7 @@ namespace MARIO
                     else if (e.CommandName == "RemoveAllFromCart")
                     {                       
                         cartProductIds.RemoveAll(id => id == productIdToRemove);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showRemoveAllToast", "showToast('Prodotto eliminato dal carrello');", true);
                     }
                     Session["idprodotto"] = cartProductIds;
                     BindCartItems();
@@ -151,12 +153,14 @@ namespace MARIO
             Session["idprodotto"] = null;
             BindCartItems();
             Response.Redirect("Carrello.aspx");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);            
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {            
             Session["idprodotto"] = null;
             BindCartItems();
+            ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
         }
         public class CartItem
         {
