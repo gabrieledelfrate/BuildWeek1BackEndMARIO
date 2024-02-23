@@ -29,8 +29,8 @@
 
         .form {
             position: absolute;
-            top: 17%;
-            right: 39.5%;
+            top: 22%;
+            right: 41%;
             padding: 60px 15px;
             width: 370px;
             height: 485px;
@@ -134,8 +134,9 @@
             -webkit-text-fill-color: transparent;
             animation: textclip 2s linear infinite;
             display: inline-block;
-            font-size: 90px;
+            font-size: 190px;
             font-family: 'Workbench', sans-serif;
+            letter-spacing:6px;
         }
 
         @keyframes textclip {
@@ -160,19 +161,19 @@
 
     <div class="row my-5 w-100 d-flex justify-content-evenly">
         <div class="col-6 w-100 d-flex justify-content-center">
-            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">PREZZI </h2>
+            <h2 class=" mt-2 animate-charcter">PREZZI </h2>
         </div>
         <div class="col-6 w-100 d-flex justify-content-center">
-            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">VANNO</h2>
+            <h2 class=" mt-2 animate-charcter">VANNO</h2>
         </div>
     </div>
 
     <div class="row logmar w-100 justify-content-evenly">
-        <div class="col-6 w-100 d-flex justify-content-center">
-            <h2 class="text-center w-100 px-5 text-white fw-bolder mt-2 animate-charcter">A</h2>
+        <div class="col-4 w-100 d-flex justify-content-end">
+            <h2 class=" mt-2 animate-charcter">A</h2>
         </div>
-        <div class="col-5 w-100 d-flex justify-content-end">
-            <h2 class="text-end pl-5 text-white fw-bolder mt-2 animate-charcter">PICCO-L</h2>
+        <div class="col-8 w-100 d-flex justify-content-center">
+            <h2 class="mt-2 animate-charcter">PICCO-L</h2>
         </div>
     </div>
 
