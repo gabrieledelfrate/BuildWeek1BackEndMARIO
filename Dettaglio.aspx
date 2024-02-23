@@ -44,7 +44,7 @@
     <div style="position: absolute; top: 0; right: 0;">
          <div class="toast toast-success bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
             <div class="toast-header bg-success text-light">
-                <h6 class="mr-auto py-1">è successo!</h6>
+                <h6 class="mr-auto py-1">Successo!</h6>
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -53,15 +53,15 @@
                 <p class="m-0 py-1">Prodotto aggiunto al carrello con successo!</p>
             </div>
         </div>
-        <div class="toast toast-info bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
-              <div class="toast-header bg-success text-light">
+        <div class="toast toast-info bg-warning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+              <div class="toast-header bg-warning text-light">
                   <h6 class="mr-auto py-1">Quante volte vuoi comprarmi?</h6>
                   <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
              </div>
              <div class="toast-body text-light">
-                 <p class="m-0 py-1">Il prodotto è gia presente nel carrello.</p>
+                 <p class="m-0 py-1">Il prodotto e' gia presente nel carrello.</p>
             </div>
         </div>
         <div class="toast toast-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">

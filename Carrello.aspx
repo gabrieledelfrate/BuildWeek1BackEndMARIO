@@ -45,24 +45,26 @@
                 </asp:Repeater>
 
 
-        <div class="d-flex justify-content-end align-items-center">
-            <h5 class="mr-2">Prezzo totale: €</h5><h5 id="totalPriceLabel" runat="server"></h5>
-        </div>
-                        <div class="d-flex justify-content-end align-items-center mt-3">
-                            <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
-            <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary ml-3 " OnClick="btnCheckout_Click" />
-                            </div>
-    </div>
-        <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body">
-                <span id="toastMessage"></span>
+                <div class="d-flex justify-content-end align-items-center">
+                    <h5 class="mr-2">Prezzo totale: €</h5>
+                    <h5 id="totalPriceLabel" runat="server"></h5>
+                </div>
+                <div class="d-flex justify-content-end align-items-center mt-3">
+                    <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary mr-3 " OnClick="btnCheckout_Click" />
+                    <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
+
+                </div>
             </div>
-            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-      </ContentTemplate>
-</asp:UpdatePanel>  
+            <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <span id="toastMessage"></span>
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <script>
         function showToast(message) {
             var toast = new bootstrap.Toast(document.getElementById('myToast'));
