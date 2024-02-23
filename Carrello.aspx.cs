@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -38,6 +38,7 @@ namespace MARIO
             }
             else
             {
+                // Se non ci sono prodotti nel carrello, mostra l'etichetta "Carrello vuoto"
                 lblCarrelloVuoto.Visible = true;
             }
         }
@@ -152,7 +153,7 @@ namespace MARIO
                         cartProductIds.Remove(productIdToRemove);
                     }
                     else if (e.CommandName == "RemoveAllFromCart")
-                    {
+                    {                       
                         cartProductIds.RemoveAll(id => id == productIdToRemove);
                         int cartCount = (Session["CartCount"] != null) ? (int)Session["CartCount"] : 0;
                         cartCount--;
@@ -173,7 +174,7 @@ namespace MARIO
             Session["CartCount"] = cartCount;
             ((MARIO.MasterPage)Master).UpdateCartCount();
             Response.Redirect("Carrello.aspx");
-            ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);            
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
@@ -187,91 +188,67 @@ namespace MARIO
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    try
-                    {
-                        connection.Open();
-
-                        string elencoProdotti = string.Join(",", cartProductIds);
-
-                        string userEmail = Session["UserID"].ToString();
-                        int userId = GetUserIdByEmail(connection, userEmail);
-
-                        if (userId != -1)
-                        {
-                            string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
-                                                 "VALUES (@elencoProdotti, @userId)";
-
-                            using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                            {
-                                command.Parameters.AddWithValue("@elencoProdotti", elencoProdotti);
-                                command.Parameters.Add("@userId", SqlDbType.Int).Value = userId;
-
-                                command.ExecuteNonQuery();
-                            }
-
-                            Session["idprodotto"] = null;
-                            BindCartItems();
-
-                            ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Errore durante il recupero dell'ID utente");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Errore durante l'inserimento nel carrello: {ex.Message}");
-                    }
-                    finally
-                    {
-                        if (connection.State == ConnectionState.Open)
-                        {
-                            connection.Close();
-                        }
-                    }
-                }
-            }
-        }
-
-        private int GetUserIdByEmail(SqlConnection connection, string email)
-        {
-            int userId = -1;
-
-            string query = "SELECT userid FROM Cliente WHERE email = @Email";
-            using (SqlCommand cmd = new SqlCommand(query, connection))
-            {
-                cmd.Parameters.AddWithValue("@Email", email);
-
-                try
-                {
                     connection.Open();
-                    object result = cmd.ExecuteScalar();
 
-                    if (result != null)
+                    string elencoProdotti = string.Join(",", cartProductIds);
+
+                    // Integra il codice del metodo GetUserIdByEmail qui
+                    int userId = -1;
+                    if (Session["UserID"] != null)
                     {
-                        userId = (int)result;
+                        string userEmail = Session["UserID"].ToString();
+                        string query = "SELECT userid FROM Cliente WHERE email = @Email";
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@Email", userEmail);
+
+                            try
+                            {
+                                object result = cmd.ExecuteScalar();
+
+                                if (result != null)
+                                {
+                                    userId = (int)result;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Errore durante il recupero dell'ID utente");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Errore durante il recupero dell'ID utente: {ex.Message}");
+                            }
+                        }
+                    }
+
+                    if (userId != -1)
+                    {
+                        string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
+                                             "VALUES (@elencoProdotti, @userId)";
+
+                        using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@elencoProdotti", elencoProdotti);
+                            command.Parameters.AddWithValue("@userId", userId);
+
+                            command.ExecuteNonQuery();
+                        }
+
+                        Session["idprodotto"] = null;
+                        BindCartItems();
+
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
                     }
                     else
                     {
                         Console.WriteLine($"Errore durante il recupero dell'ID utente");
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Errore durante il recupero dell'ID utente: {ex.Message}");
-                }
-                finally
-                {
-                    if (connection.State == ConnectionState.Open)
-                    {
-                        connection.Close();
-                    }
-                }
             }
-
-            return userId;
         }
+
+
 
 
 

@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="MARIO.Carrello" %>
+<%@ Page Title="" EnableEventValidation="true" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="MARIO.Carrello" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="updatePanel" runat="server">
         <ContentTemplate>
             <div class="container m-auto">
                 <h3 class="my-3">Carrello</h3>
-                <asp:Label ID="lblCarrelloVuoto" runat="server" Text="Il Carrello è vuoto..." Visible="false" CssClass="text-center text-danger font-weight-bold display-4"></asp:Label>
+                <asp:Label ID="lblCarrelloVuoto" runat="server" Text="Carrello vuoto..." Visible="false" CssClass="text-center text-danger fs-3 fw-bold"></asp:Label>
                 <asp:Repeater ID="rptCartItemss" runat="server" OnItemDataBound="rptCartItemss_ItemDataBound">
                     <ItemTemplate>
                         <div class="card mb-3">
@@ -17,8 +17,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title"><%# Eval("Nome") %></h4>
                                         <p class="card-text font-weight-bold">Prezzo: <%# Eval("Prezzo") %>€</p>
-                                       <div class="d-flex">
-                                        <asp:DropDownList ID="ddlQuantitaCarrello1" runat="server" CssClass="form-select w-25 dropCart mr-2" AutoPostBack="true"
+                                        <asp:DropDownList ID="ddlQuantitaCarrello1" runat="server" CssClass="form-select w-25 dropCart" AutoPostBack="true"
                                             OnSelectedIndexChanged="DdlQuantitaCarrello1_SelectedIndexChanged"
                                             data-product-id='<%# Eval("ProductId") %>'>
                                             <asp:ListItem Value="1">1</asp:ListItem>
@@ -32,9 +31,8 @@
                                             <asp:ListItem Value="9">9</asp:ListItem>
                                             <asp:ListItem Value="10">10</asp:ListItem>
                                         </asp:DropDownList>
-                                        <asp:Button ID="btnRemoveAllFromCart" runat="server" Text="Rimuovi" CssClass="btn btn-danger mb-1"
+                                        <asp:Button ID="btnRemoveAllFromCart" runat="server" Text="Rimuovi dal Carrello" CssClass="btn btn-danger mb-1"
                                             CommandName="RemoveAllFromCart" CommandArgument='<%# Eval("ProductId") %>' OnCommand="btnRemoveFromCart_Click" />
-                                       </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2 mt-3">
@@ -45,7 +43,6 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
-
                 <div class="d-flex justify-content-end align-items-center">
                     <h5 class="mr-2">Prezzo totale: </h5>
                     <h5 id="totalPriceLabel" runat="server"></h5>
@@ -53,20 +50,20 @@
                 </div>
                 <div class="d-flex justify-content-end align-items-center mt-3">
                     <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary mr-3 " OnClick="btnCheckout_Click" />
-                    <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
+            <asp:Button ID="btnAcquista" runat="server" Text="Acquista" OnClick="btnCheckout_Click" AutoPostBack="true" />
 
-                </div>
+                            </div>
+    </div>
+        <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <span id="toastMessage"></span>
             </div>
-            <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="d-flex">
-                    <div class="toast-body">
-                        <span id="toastMessage"></span>
-                    </div>
-                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+      </ContentTemplate>
+</asp:UpdatePanel>  
     <script>
         function showToast(message) {
             var toast = new bootstrap.Toast(document.getElementById('myToast'));
