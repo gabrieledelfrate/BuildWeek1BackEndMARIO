@@ -40,8 +40,8 @@
         </div>
     </div>
 
-
 <div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0px; right: 0; min-height: 250px; z-index: 10000;">
+
     <div style="position: absolute; top: 0; right: 0;">
          <div class="toast toast-success bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
             <div class="toast-header bg-success text-light">

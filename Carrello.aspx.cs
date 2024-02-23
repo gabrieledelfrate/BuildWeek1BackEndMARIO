@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
@@ -183,25 +184,75 @@ namespace MARIO
                     connection.Open();
 
                     string elencoProdotti = string.Join(",", cartProductIds);
+                                        
+                    string userEmail = Session["UserID"].ToString(); 
+                    int userId = GetUserIdByEmail(connection, userEmail);
 
-                    string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
-                                         "VALUES (@ElencoProdotti, (SELECT userid FROM Cliente WHERE email = @Email))";
-                    
-                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    if (userId != -1) 
                     {
-                        command.Parameters.AddWithValue("@ElencoProdotti", elencoProdotti);
-                        command.Parameters.AddWithValue("@Email", "LaTuaEmail");
-                        
-                        command.ExecuteNonQuery();
+                        string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
+                                             "VALUES (@ElencoProdotti, @UserId)";
+
+                        using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@ElencoProdotti", elencoProdotti);
+                            command.Parameters.AddWithValue("@UserId", userId);
+
+                            command.ExecuteNonQuery();
+                        }
+
+                        Session["idprodotto"] = null;
+                        BindCartItems();
+
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
                     }
-
-                    Session["idprodotto"] = null;
-                    BindCartItems();
-
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
+                    else
+                    {
+                       Console.WriteLine($"Errore durante il recupero dell'ID utente");
+                    }
                 }
             }
         }
+
+        private int GetUserIdByEmail(SqlConnection connection, string email)
+        {
+            int userId = -1; 
+
+            string query = "SELECT userid FROM Cliente WHERE email = @Email";
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@Email", email);
+
+                try
+                {
+                    connection.Open(); 
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null) 
+                    {
+                        userId = (int)result; 
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Errore durante il recupero dell'ID utente");
+                    }
+                }
+                catch (Exception ex)
+                {                    
+                    Console.WriteLine($"Errore durante il recupero dell'ID utente: {ex.Message}");
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+
+            return userId;
+        }
+
 
 
 

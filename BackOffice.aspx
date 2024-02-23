@@ -26,6 +26,8 @@
     <form id="form1" runat="server">
         <div class="container mb-5 pt-5">
             <asp:Button ID="btnGoToHome" runat="server" Text="Home" CssClass="btn btn-info mb-5" PostBackUrl="~/Home.aspx" />
+            <asp:Button ID="btnGoToStoricoOrdini" runat="server" Text="Storico Ordini" CssClass="btn btn-info mb-5" PostBackUrl="~/StoricoOrdini.aspx" />
+
             <div class="d-flex justify-content-around mb-5 row">
                 <div class="col-9">
                     <h2>ADMIN Page - Aggiungi, Modifica o Elimina prodotti dal DataBase</h2>
