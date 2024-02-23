@@ -38,7 +38,6 @@ namespace MARIO
             }
             else
             {
-                // Se non ci sono prodotti nel carrello, mostra l'etichetta "Carrello vuoto"
                 lblCarrelloVuoto.Visible = true;
             }
         }
@@ -153,7 +152,7 @@ namespace MARIO
                         cartProductIds.Remove(productIdToRemove);
                     }
                     else if (e.CommandName == "RemoveAllFromCart")
-                    {                       
+                    {
                         cartProductIds.RemoveAll(id => id == productIdToRemove);
                         int cartCount = (Session["CartCount"] != null) ? (int)Session["CartCount"] : 0;
                         cartCount--;
@@ -174,7 +173,7 @@ namespace MARIO
             Session["CartCount"] = cartCount;
             ((MARIO.MasterPage)Master).UpdateCartCount();
             Response.Redirect("Carrello.aspx");
-            ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);            
+            ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)

@@ -5,7 +5,7 @@
         <ContentTemplate>
             <div class="container m-auto">
                 <h3 class="my-3">Carrello</h3>
-                <asp:Label ID="lblCarrelloVuoto" runat="server" Text="Carrello vuoto..." Visible="false" CssClass="text-center text-danger fs-3 fw-bold"></asp:Label>
+                <asp:Label ID="lblCarrelloVuoto" runat="server" Text="Il Carrello è vuoto..." Visible="false" CssClass="text-center text-danger font-weight-bold display-4"></asp:Label>
                 <asp:Repeater ID="rptCartItemss" runat="server" OnItemDataBound="rptCartItemss_ItemDataBound">
                     <ItemTemplate>
                         <div class="card mb-3">
