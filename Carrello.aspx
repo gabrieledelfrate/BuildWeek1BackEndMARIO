@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" EnableEventValidation="true" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="MARIO.Carrello" %>
+<%@ Page Title="" EnableEventValidation="true" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="MARIO.Carrello" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="updatePanel" runat="server">
