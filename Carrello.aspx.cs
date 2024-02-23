@@ -187,34 +187,48 @@ namespace MARIO
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
-
-                    string elencoProdotti = string.Join(",", cartProductIds);
-                                        
-                    string userEmail = Session["UserID"].ToString(); 
-                    int userId = GetUserIdByEmail(connection, userEmail);
-
-                    if (userId != -1) 
+                    try
                     {
-                        string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
-                                             "VALUES (@ElencoProdotti, @UserId)";
+                        connection.Open();
 
-                        using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                        string elencoProdotti = string.Join(",", cartProductIds);
+
+                        string userEmail = Session["UserID"].ToString();
+                        int userId = GetUserIdByEmail(connection, userEmail);
+
+                        if (userId != -1)
                         {
-                            command.Parameters.AddWithValue("@ElencoProdotti", elencoProdotti);
-                            command.Parameters.AddWithValue("@UserId", userId);
+                            string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
+                                                 "VALUES (@elencoProdotti, @userId)";
 
-                            command.ExecuteNonQuery();
+                            using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                            {
+                                command.Parameters.AddWithValue("@elencoProdotti", elencoProdotti);
+                                command.Parameters.Add("@userId", SqlDbType.Int).Value = userId;
+
+                                command.ExecuteNonQuery();
+                            }
+
+                            Session["idprodotto"] = null;
+                            BindCartItems();
+
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
                         }
-
-                        Session["idprodotto"] = null;
-                        BindCartItems();
-
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
+                        else
+                        {
+                            Console.WriteLine($"Errore durante il recupero dell'ID utente");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                       Console.WriteLine($"Errore durante il recupero dell'ID utente");
+                        Console.WriteLine($"Errore durante l'inserimento nel carrello: {ex.Message}");
+                    }
+                    finally
+                    {
+                        if (connection.State == ConnectionState.Open)
+                        {
+                            connection.Close();
+                        }
                     }
                 }
             }
@@ -222,7 +236,7 @@ namespace MARIO
 
         private int GetUserIdByEmail(SqlConnection connection, string email)
         {
-            int userId = -1; 
+            int userId = -1;
 
             string query = "SELECT userid FROM Cliente WHERE email = @Email";
             using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -231,12 +245,12 @@ namespace MARIO
 
                 try
                 {
-                    connection.Open(); 
+                    connection.Open();
                     object result = cmd.ExecuteScalar();
 
-                    if (result != null) 
+                    if (result != null)
                     {
-                        userId = (int)result; 
+                        userId = (int)result;
                     }
                     else
                     {
@@ -244,7 +258,7 @@ namespace MARIO
                     }
                 }
                 catch (Exception ex)
-                {                    
+                {
                     Console.WriteLine($"Errore durante il recupero dell'ID utente: {ex.Message}");
                 }
                 finally
