@@ -7,6 +7,27 @@
     border: 1px solid #ccc;
     z-index: 1000;
 }
+.price {
+    font-weight: bold;
+    font-size: 30px;
+}
+.drop {
+    color: black;
+    cursor: pointer;
+}
+.contaCarr {
+    background-color: red !important;
+    width: 20px;
+    height: 20px;
+    border-radius: 49%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; 
+}
+.dropCart {
+    height: 37px;
+}
 footer {
     margin-top: 150px !important;
     background: rgb(0,99,174);
