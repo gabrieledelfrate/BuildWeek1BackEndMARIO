@@ -29,11 +29,11 @@
 
         .form {
             position: absolute;
-            top: 22%;
-            right: 39.5%;
-            padding: 60px 15px;
-            width: 370px;
-            height: 480px;
+    top: 17%;
+    right: 39.5%;
+    padding: 60px 15px;
+    width: 370px;
+    height: 485px;
             background: #E60A14;
             box-shadow: 0px 0px 10px 0px rgb(116, 119, 114);
             border-radius: 5px;
@@ -134,7 +134,7 @@
             -webkit-text-fill-color: transparent;
             animation: textclip 2s linear infinite;
             display: inline-block;
-            font-size: 100px;
+            font-size: 90px;
             font-family: "Workbench", sans-serif;
             font-optical-sizing: auto;
             font-weight: 400;
