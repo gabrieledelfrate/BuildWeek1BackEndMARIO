@@ -126,7 +126,7 @@
             background-image: linear-gradient( -225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100% );
             background-size: auto auto;
             background-clip: border-box;
-            background-size: 200% auto;
+            background-size: 100% auto;
             color: #fff;
             background-clip: text;
             text-fill-color: transparent;
@@ -134,7 +134,7 @@
             -webkit-text-fill-color: transparent;
             animation: textclip 2s linear infinite;
             display: inline-block;
-            font-size: 190px;
+            font-size: 100px;
             font-family: "Workbench", sans-serif;
             font-optical-sizing: auto;
             font-weight: 400;
@@ -151,32 +151,35 @@
     </style>
 </head>
 <body>
-    <div class="row mb-5">
-        <div class="col-3 d-flex justify-content-center">
+    <div class="row w-100 mb-5">
+        <div class="col-3 w-100 d-flex justify-content-end">
             <h2 class="text-center text-white fw-bolder mt-2 animate-charcter workbench">AL </h2>
         </div>
-        <div class="col-6 d-flex justify-content-center">
+        <div class="col-6 w-100 d-flex justify-content-center">
             <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">PICCOL</h2>
         </div>
-        <div class="col-3 d-flex justify-content-center">
+        <div class="col-3 w-100 d-flex justify-content-start">
             <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">I</h2>
         </div>
     </div>
 
-    <div class="row my-5 d-flex justify-content-evenly">
-        <div class="col-6 d-flex justify-content-center">
+    <div class="row my-5 w-100 d-flex justify-content-evenly">
+        <div class="col-6 w-100 d-flex justify-content-center">
             <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">PREZZI </h2>
         </div>
-        <div class="col-6 d-flex justify-content-center">
+        <div class="col-6 w-100 d-flex justify-content-center">
             <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">VANNO</h2>
         </div>
 
     </div>
 
-    <div class="row logmar">
-        <div class="col-12 d-flex justify-content-center">
-            <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">A PICCO-L</h2>
+    <div class="row logmar w-100 justify-content-evenly">
+        <div class="col-6 w-100 d-flex justify-content-center">
+            <h2 class="text-center w-100 px-5 text-white fw-bolder mt-2 animate-charcter">A</h2>
         </div>
+        <div class="col-5 w-100 d-flex justify-content-end">
+    <h2 class="text-end pl-5 text-white fw-bolder mt-2 animate-charcter">PICCO-L</h2>
+</div>
 
     </div>
 
