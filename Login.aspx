@@ -135,7 +135,7 @@
             animation: textclip 2s linear infinite;
             display: inline-block;
             font-size: 90px;
-            font-family:'Workbench', sans-serif;
+            font-family: 'Workbench', sans-serif;
         }
 
         @keyframes textclip {
