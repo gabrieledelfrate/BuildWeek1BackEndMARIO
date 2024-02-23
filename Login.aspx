@@ -170,7 +170,6 @@
         <div class="col-6 w-100 d-flex justify-content-center">
             <h2 class="text-center text-white fw-bolder mt-2 animate-charcter">VANNO</h2>
         </div>
-
     </div>
 
     <div class="row logmar w-100 justify-content-evenly">
@@ -178,8 +177,8 @@
             <h2 class="text-center w-100 px-5 text-white fw-bolder mt-2 animate-charcter">A</h2>
         </div>
         <div class="col-5 w-100 d-flex justify-content-end">
-    <h2 class="text-end pl-5 text-white fw-bolder mt-2 animate-charcter">PICCO-L</h2>
-</div>
+            <h2 class="text-end pl-5 text-white fw-bolder mt-2 animate-charcter">PICCO-L</h2>
+        </div>
 
     </div>
 
