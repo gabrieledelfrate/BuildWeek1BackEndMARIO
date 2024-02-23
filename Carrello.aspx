@@ -49,7 +49,7 @@
         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
                             <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
-            <asp:Button ID="btnAcquista" runat="server" Text="Acquista" OnClick="btnCheckout_Click" AutoPostBack="true" />
+            <asp:Button ID="btnAcquista" runat="server" Text="Acquista" CssClass="btn btn-secondary" OnClick="btnCheckout_Click" AutoPostBack="true" />
 
                             </div>
     </div>

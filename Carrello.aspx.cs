@@ -192,7 +192,6 @@ namespace MARIO
 
                     string elencoProdotti = string.Join(",", cartProductIds);
 
-                    // Integra il codice del metodo GetUserIdByEmail qui
                     int userId = -1;
                     if (Session["UserID"] != null)
                     {
@@ -235,17 +234,22 @@ namespace MARIO
                             command.ExecuteNonQuery();
                         }
 
-                        Session["idprodotto"] = null;
-                        BindCartItems();
-
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
+                        
                     }
                     else
                     {
                         Console.WriteLine($"Errore durante il recupero dell'ID utente");
                     }
-                }
+                }                
             }
+            Session["idprodotto"] = null;
+            BindCartItems();            
+            int cartCount = 0;
+            Session["CartCount"] = cartCount;
+            ((MARIO.MasterPage)Master).UpdateCartCount();
+            System.Threading.Thread.Sleep(2000);
+            ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
+            Response.Redirect("Carrello.aspx");            
         }
 
 
