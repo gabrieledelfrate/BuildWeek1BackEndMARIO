@@ -29,11 +29,11 @@
 
         .form {
             position: absolute;
-    top: 17%;
-    right: 39.5%;
-    padding: 60px 15px;
-    width: 370px;
-    height: 485px;
+            top: 17%;
+            right: 39.5%;
+            padding: 60px 15px;
+            width: 370px;
+            height: 485px;
             background: #E60A14;
             box-shadow: 0px 0px 10px 0px rgb(116, 119, 114);
             border-radius: 5px;
@@ -126,7 +126,7 @@
             background-image: linear-gradient( -225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100% );
             background-size: auto auto;
             background-clip: border-box;
-            background-size: 100% auto;
+            background-size: 200% auto;
             color: #fff;
             background-clip: text;
             text-fill-color: transparent;
@@ -135,12 +135,7 @@
             animation: textclip 2s linear infinite;
             display: inline-block;
             font-size: 90px;
-            font-family: "Workbench", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 400;
-            font-style: normal;
-            font-variation-settings: "BLED" 0, "SCAN" 6;
-            letter-spacing: 6px;
+            font-family:'Workbench', sans-serif;
         }
 
         @keyframes textclip {
@@ -179,7 +174,6 @@
         <div class="col-5 w-100 d-flex justify-content-end">
             <h2 class="text-end pl-5 text-white fw-bolder mt-2 animate-charcter">PICCO-L</h2>
         </div>
-
     </div>
 
 
