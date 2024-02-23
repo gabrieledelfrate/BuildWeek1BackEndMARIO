@@ -16,8 +16,8 @@
                                 <div class="col-md-7">
                                     <div class="card-body">
                                         <h4 class="card-title"><%# Eval("Nome") %></h4>
-                                        <p class="card-text fw-bold">Prezzo: <%# Eval("Prezzo") %>€</p>
-                                        <asp:DropDownList ID="ddlQuantitaCarrello1" runat="server" CssClass="form-select w-50" AutoPostBack="true"
+                                        <p class="card-text font-weight-bold">Prezzo: <%# Eval("Prezzo") %>€</p>
+                                        <asp:DropDownList ID="ddlQuantitaCarrello1" runat="server" CssClass="form-select w-25 dropCart" AutoPostBack="true"
                                             OnSelectedIndexChanged="DdlQuantitaCarrello1_SelectedIndexChanged"
                                             data-product-id='<%# Eval("ProductId") %>'>
                                             <asp:ListItem Value="1">1</asp:ListItem>
@@ -31,7 +31,7 @@
                                             <asp:ListItem Value="9">9</asp:ListItem>
                                             <asp:ListItem Value="10">10</asp:ListItem>
                                         </asp:DropDownList>
-                                        <asp:Button ID="btnRemoveAllFromCart" runat="server" Text="Rimuovi dal Carrello" CssClass="btn btn-danger mt-2"
+                                        <asp:Button ID="btnRemoveAllFromCart" runat="server" Text="Rimuovi dal Carrello" CssClass="btn btn-danger mb-1"
                                             CommandName="RemoveAllFromCart" CommandArgument='<%# Eval("ProductId") %>' OnCommand="btnRemoveFromCart_Click" />
                                     </div>
                                 </div>
@@ -45,11 +45,13 @@
                 </asp:Repeater>
 
 
-        <div class="text-end">
-            <p class="lead">Prezzo totale: <span id="totalPriceLabel" runat="server"></span>€</p>
-            <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
-            <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary" OnClick="btnCheckout_Click" />
+        <div class="d-flex justify-content-end align-items-center">
+            <h5>Prezzo totale: </h5><h5 id="totalPriceLabel" runat="server"></h5>€
         </div>
+                        <div class="d-flex justify-content-end align-items-center mt-3">
+                            <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
+            <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary ml-3 " OnClick="btnCheckout_Click" />
+                            </div>
     </div>
         <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
