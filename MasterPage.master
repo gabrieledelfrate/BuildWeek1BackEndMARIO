@@ -49,6 +49,9 @@
                                     <a class="nav-link pr-0 font-weight-bold" href="Carrello.aspx">Carrello</a>
                                     <asp:Label ID="lblCartCount" runat="server" CssClass="contaCarr"></asp:Label>
                                 </li>
+                                                                <li class="nav-item d-flex">
+                                    <a class="nav-link pr-0 font-weight-bold" href="ITuoiOrdini.aspx">Ordini</a>
+                                </li>
                                 <li class="nav-item ml-4">
                                     <asp:Button runat="server" ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" CssClass="btn btn-info mr-5 font-weight-bold" />
                                 </li>

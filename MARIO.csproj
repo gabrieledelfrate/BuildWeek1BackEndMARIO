@@ -76,6 +76,7 @@
     <Content Include="StoricoOrdini.aspx" />
     <Content Include="StyleCSS.css" />
     <Content Include="RedirectOrder.aspx" />
+    <Content Include="ITuoiOrdini.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackOffice.aspx.cs">
@@ -141,6 +142,13 @@
     </Compile>
     <Compile Include="RedirectOrder.aspx.designer.cs">
       <DependentUpon>RedirectOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ITuoiOrdini.aspx.cs">
+      <DependentUpon>ITuoiOrdini.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ITuoiOrdini.aspx.designer.cs">
+      <DependentUpon>ITuoiOrdini.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
