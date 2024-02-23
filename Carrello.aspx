@@ -16,7 +16,8 @@
                                 <div class="col-md-7">
                                     <div class="card-body">
                                         <h4 class="card-title"><%# Eval("Nome") %></h4>
-                                        <p class="card-text font-weight-bold">Prezzo: <%# Eval("Prezzo") %>€</p>
+                                        <p class="card-text font-weight-bold">Prezzo: <%# Eval("Prezzo") %>&euro;</p>
+                                        <div class="d-flex">
                                         <asp:DropDownList ID="ddlQuantitaCarrello1" runat="server" CssClass="form-select w-25 dropCart" AutoPostBack="true"
                                             OnSelectedIndexChanged="DdlQuantitaCarrello1_SelectedIndexChanged"
                                             data-product-id='<%# Eval("ProductId") %>'>
@@ -31,38 +32,40 @@
                                             <asp:ListItem Value="9">9</asp:ListItem>
                                             <asp:ListItem Value="10">10</asp:ListItem>
                                         </asp:DropDownList>
-                                        <asp:Button ID="btnRemoveAllFromCart" runat="server" Text="Rimuovi dal Carrello" CssClass="btn btn-danger mb-1"
+                                        <asp:Button ID="btnRemoveAllFromCart" runat="server" Text="Rimuovi" CssClass="btn btn-danger mb-1 mx-2"
                                             CommandName="RemoveAllFromCart" CommandArgument='<%# Eval("ProductId") %>' OnCommand="btnRemoveFromCart_Click" />
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2 mt-3">
-                                    <p class="card-text">Quantità: <%# Eval("Quantita") %> pz. </p>
-                                    <p class="card-text">Totale: <%# Eval("TotaleProdotto") %>€</p>
+                                    <p class="card-text">Quantita': <%# Eval("Quantita") %> pz. </p>
+                                    <p class="card-text">Totale: <%# Eval("TotaleProdotto") %>&euro;</p>
                                 </div>
                             </div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
 
-        <div class="d-flex justify-content-end align-items-center">
-            <h5>Prezzo totale: </h5><h5 id="totalPriceLabel" runat="server"></h5>€
-        </div>
-                        <div class="d-flex justify-content-end align-items-center mt-3">
-                            <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
-            <asp:Button ID="btnAcquista" runat="server" Text="Acquista" CssClass="btn btn-secondary" OnClick="btnCheckout_Click" AutoPostBack="true" />
-
-                            </div>
-    </div>
-        <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body">
-                <span id="toastMessage"></span>
+                <div class="d-flex justify-content-end align-items-center">
+                    <h5 class="mr-2">Prezzo totale: </h5>
+                    <h5 id="totalPriceLabel" runat="server"></h5>
+                    <h5 class="mr-2">&euro; </h5>
+                </div>
+                <div class="d-flex justify-content-end align-items-center mt-3">
+                     <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
+                     <asp:Button ID="btnAcquista" runat="server" Text="Acquista" CssClass="btn btn-secondary" OnClick="btnCheckout_Click" AutoPostBack="true" />
+                </div>
             </div>
-            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-      </ContentTemplate>
-</asp:UpdatePanel>  
+            <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <span id="toastMessage"></span>
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <script>
         function showToast(message) {
             var toast = new bootstrap.Toast(document.getElementById('myToast'));

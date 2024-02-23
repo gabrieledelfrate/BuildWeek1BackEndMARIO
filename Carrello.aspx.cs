@@ -38,7 +38,6 @@ namespace MARIO
             }
             else
             {
-                // Se non ci sono prodotti nel carrello, mostra l'etichetta "Carrello vuoto"
                 lblCarrelloVuoto.Visible = true;
             }
         }

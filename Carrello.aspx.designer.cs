@@ -51,13 +51,13 @@ namespace MARIO
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl totalPriceLabel;
 
         /// <summary>
-        /// Controllo btnEmptyCart.
+        /// Controllo btnCheckout.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEmptyCart;
+        protected global::System.Web.UI.WebControls.Button btnCheckout;
 
         /// <summary>
         /// Controllo btnAcquista.

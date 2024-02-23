@@ -26,7 +26,7 @@
 
         .form {
             position: absolute;
-            top: 22%;
+            top: 10%;
             right: 39.5%;
             padding: 60px 15px;
             width: 370px;
@@ -47,7 +47,7 @@
         }
 
         .content {
-            height: 100%;
+            height: 20%;
             width: 100%;
             padding: 25px;
         }
