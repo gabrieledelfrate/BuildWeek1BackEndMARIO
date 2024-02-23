@@ -60,12 +60,12 @@ namespace MARIO
         protected global::System.Web.UI.WebControls.Button btnEmptyCart;
 
         /// <summary>
-        /// Controllo btnCheckout.
+        /// Controllo btnAcquista.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckout;
+        protected global::System.Web.UI.WebControls.Button btnAcquista;
     }
 }

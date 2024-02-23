@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="MARIO.Carrello" %>
+﻿<%@ Page Title="" EnableEventValidation="true" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="MARIO.Carrello" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="updatePanel" runat="server">
@@ -44,13 +44,13 @@
                     </ItemTemplate>
                 </asp:Repeater>
 
-
         <div class="d-flex justify-content-end align-items-center">
             <h5>Prezzo totale: </h5><h5 id="totalPriceLabel" runat="server"></h5>€
         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
                             <asp:Button ID="btnEmptyCart" runat="server" Text="Svuota Carrello" CssClass="btn btn-secondary" OnClick="btnEmptyCart_Click" />
-            <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary ml-3 " OnClick="btnCheckout_Click" />
+            <asp:Button ID="btnAcquista" runat="server" Text="Acquista" OnClick="btnCheckout_Click" AutoPostBack="true" />
+
                             </div>
     </div>
         <div id="myToast" class="toast align-items-center text-white bg-success" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">

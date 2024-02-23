@@ -191,19 +191,46 @@ namespace MARIO
                     connection.Open();
 
                     string elencoProdotti = string.Join(",", cartProductIds);
-                                        
-                    string userEmail = Session["UserID"].ToString(); 
-                    int userId = GetUserIdByEmail(connection, userEmail);
 
-                    if (userId != -1) 
+                    // Integra il codice del metodo GetUserIdByEmail qui
+                    int userId = -1;
+                    if (Session["UserID"] != null)
+                    {
+                        string userEmail = Session["UserID"].ToString();
+                        string query = "SELECT userid FROM Cliente WHERE email = @Email";
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@Email", userEmail);
+
+                            try
+                            {
+                                object result = cmd.ExecuteScalar();
+
+                                if (result != null)
+                                {
+                                    userId = (int)result;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Errore durante il recupero dell'ID utente");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Errore durante il recupero dell'ID utente: {ex.Message}");
+                            }
+                        }
+                    }
+
+                    if (userId != -1)
                     {
                         string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
-                                             "VALUES (@ElencoProdotti, @UserId)";
+                                             "VALUES (@elencoProdotti, @userId)";
 
                         using (SqlCommand command = new SqlCommand(insertQuery, connection))
                         {
-                            command.Parameters.AddWithValue("@ElencoProdotti", elencoProdotti);
-                            command.Parameters.AddWithValue("@UserId", userId);
+                            command.Parameters.AddWithValue("@elencoProdotti", elencoProdotti);
+                            command.Parameters.AddWithValue("@userId", userId);
 
                             command.ExecuteNonQuery();
                         }
@@ -215,50 +242,13 @@ namespace MARIO
                     }
                     else
                     {
-                       Console.WriteLine($"Errore durante il recupero dell'ID utente");
-                    }
-                }
-            }
-        }
-
-        private int GetUserIdByEmail(SqlConnection connection, string email)
-        {
-            int userId = -1; 
-
-            string query = "SELECT userid FROM Cliente WHERE email = @Email";
-            using (SqlCommand cmd = new SqlCommand(query, connection))
-            {
-                cmd.Parameters.AddWithValue("@Email", email);
-
-                try
-                {
-                    connection.Open(); 
-                    object result = cmd.ExecuteScalar();
-
-                    if (result != null) 
-                    {
-                        userId = (int)result; 
-                    }
-                    else
-                    {
                         Console.WriteLine($"Errore durante il recupero dell'ID utente");
                     }
                 }
-                catch (Exception ex)
-                {                    
-                    Console.WriteLine($"Errore durante il recupero dell'ID utente: {ex.Message}");
-                }
-                finally
-                {
-                    if (connection.State == ConnectionState.Open)
-                    {
-                        connection.Close();
-                    }
-                }
             }
-
-            return userId;
         }
+
+
 
 
 
