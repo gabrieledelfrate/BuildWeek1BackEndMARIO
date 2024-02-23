@@ -1,4 +1,32 @@
 # MARIO
+
+"MARIO" è un applicazione web realizzata con ASP.NET Framework in C#. 
+è supportata dal database "Piccol" creato con SQL Server Management Studio. 
+In fondo al ReadMe troverete le query necessarie per inizializzarlo.
+L'idea alla base era quella di trasformare le idee del grande Maccio Capatonda
+in un e-commerce semplice e ricco di funzionalità. 
+La pagina iniziale preimpostata è il Login, nel quale è possibile effettuare l'accesso
+con le credenziali salvate in fase di registrazione. Se non si dispone ancora di credenziali d'accesso
+si puo cliccare sul bottone "Registrati", si verrà reindirizzati ad una pagina nella quale inserire 
+un'indirizzo email e una password. Al click su "registrati" la email e la password inserite
+saranno registrate in un apposita tabella presente in database chiamata "Cliente". Si verrà reindirizzati alla 
+pagina di Login, dove si dovranno inseirire le credenziali appena registrate.
+La prima pagina alla quale si viene reindirizzati è la Home, con la vetrina prodotti. 
+Su ogni scheda prodotto è disponibile il tasto Dettagli, che reindirizza 
+ad una pagina dove è possibile leggere una descrizione del prodotto selezionato.
+Dalla pagina dettaglio è possibile scegliere di acquistare il prodotto, selezionandone anche la quantità 
+desiderate tramuite un apposito dropdown. Nella navbar è disponibile il bottone "Carrello" e di fianco
+un Counter che tiene traccia del numero di prodotti aggiunti al carrello.
+Cliccando su carrello è possibile visionare gli articoli aggiunti al carrello organizzati in schede singole.
+In ogni scheda è possibile visionare la quantità di prodotto selezionata e il prezzo totale per singolo prodotto. 
+Tramite il dropdown è possibile modificare la quantità selezionata. è disponibile un bottone per eliminare il singolo articolo
+dal carrello. In fondo alla pagina carrello sono disponibili un button "Svuota Carrello" per eliminare tutti i prodotti presenti nel carrello, 
+ed un button "Acquista" che provvederà a registrare i dati del carrello in un'apposita tabella del database chiamata "Carrello".
+
+Se in fase di Login si inserisce "admin" nella casella dedicata alla email e "admin" come password, si accederà alla pagina di backoffice.
+Da questa pagina è possibile aggiungere, modificare o eliminare prodotti dal database. Cliccando sul button "Home" è possibile accedere alla Home, 
+cliccando sul button "Storico Ordini" sarà possibile visionare lo storico ordini effettuati e registrati nel database.
+
 Query per la creazione del database Microsoft SQL Server Management
 
 Basta una sola query per creare tutte le table insieme:
@@ -16,6 +44,7 @@ CREATE TABLE Cliente (
     email NVARCHAR(255) NOT NULL,
     password NVARCHAR(255) NOT NULL,
     idcarrello INT
+    prezzototale INT
 );
 
 CREATE TABLE Carrello (
