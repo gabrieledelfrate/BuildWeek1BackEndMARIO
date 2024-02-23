@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // <generato automaticamente>
 //     Questo codice è stato generato da uno strumento.
 //
@@ -51,15 +51,6 @@ namespace MARIO
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl totalPriceLabel;
 
         /// <summary>
-        /// Controllo btnCheckout.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckout;
-
-        /// <summary>
         /// Controllo btnEmptyCart.
         /// </summary>
         /// <remarks>
@@ -67,5 +58,14 @@ namespace MARIO
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEmptyCart;
+
+        /// <summary>
+        /// Controllo btnAcquista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAcquista;
     }
 }
