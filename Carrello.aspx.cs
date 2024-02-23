@@ -248,12 +248,8 @@ namespace MARIO
             ((MARIO.MasterPage)Master).UpdateCartCount();
             System.Threading.Thread.Sleep(2000);
             ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
-            Response.Redirect("Carrello.aspx");            
+            Response.Redirect("RedirectOrder.aspx");            
         }
-
-
-
-
 
 
         public class CartItem

@@ -75,6 +75,7 @@
     <Content Include="Registrazione.aspx" />
     <Content Include="StoricoOrdini.aspx" />
     <Content Include="StyleCSS.css" />
+    <Content Include="RedirectOrder.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackOffice.aspx.cs">
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="StoricoOrdini.aspx.designer.cs">
       <DependentUpon>StoricoOrdini.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RedirectOrder.aspx.cs">
+      <DependentUpon>RedirectOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RedirectOrder.aspx.designer.cs">
+      <DependentUpon>RedirectOrder.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
