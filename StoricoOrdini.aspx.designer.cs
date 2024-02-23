@@ -24,6 +24,24 @@ namespace MARIO
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Controllo btnGoToHome.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGoToHome;
+
+        /// <summary>
+        /// Controllo btnGoBackOffice.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGoBackOffice;
+
+        /// <summary>
         /// Controllo GridViewStoricoOrdini.
         /// </summary>
         /// <remarks>

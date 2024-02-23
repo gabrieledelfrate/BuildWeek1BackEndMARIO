@@ -133,7 +133,7 @@ namespace MARIO
                 productIds.AddRange(Enumerable.Repeat(productId, newQuantity));
                 Session["idprodotto"] = productIds;
 
-                BindCartItems();  
+                BindCartItems();
 
             }
         }
@@ -148,11 +148,11 @@ namespace MARIO
                 {
                     int productIdToRemove = Convert.ToInt32(e.CommandArgument);
                     if (e.CommandName == "RemoveFromCart")
-                    {                        
+                    {
                         cartProductIds.Remove(productIdToRemove);
                     }
                     else if (e.CommandName == "RemoveAllFromCart")
-                    {                       
+                    {
                         cartProductIds.RemoveAll(id => id == productIdToRemove);
                         int cartCount = (Session["CartCount"] != null) ? (int)Session["CartCount"] : 0;
                         cartCount--;
@@ -169,11 +169,11 @@ namespace MARIO
         {
             Session["idprodotto"] = null;
             BindCartItems();
-            int cartCount = 0;            
+            int cartCount = 0;
             Session["CartCount"] = cartCount;
             ((MARIO.MasterPage)Master).UpdateCartCount();
             Response.Redirect("Carrello.aspx");
-            ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);            
+            ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
@@ -222,33 +222,36 @@ namespace MARIO
 
                     if (userId != -1)
                     {
-                        string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid) " +
-                                             "VALUES (@elencoProdotti, @userId)";
+                        string insertQuery = "INSERT INTO Carrello (elenco_id_prodotti, userid, prezzototale) " +
+                                             "VALUES (@elencoProdotti, @userId, @prezzoTotale)";
+
+                        decimal totalPrice = cartItems.Sum(item => item.TotaleProdotto);
 
                         using (SqlCommand command = new SqlCommand(insertQuery, connection))
                         {
                             command.Parameters.AddWithValue("@elencoProdotti", elencoProdotti);
                             command.Parameters.AddWithValue("@userId", userId);
+                            command.Parameters.AddWithValue("@prezzoTotale", totalPrice);
 
                             command.ExecuteNonQuery();
                         }
 
-                        
+
                     }
                     else
                     {
                         Console.WriteLine($"Errore durante il recupero dell'ID utente");
                     }
-                }                
+                }
             }
             Session["idprodotto"] = null;
-            BindCartItems();            
+            BindCartItems();
             int cartCount = 0;
             Session["CartCount"] = cartCount;
             ((MARIO.MasterPage)Master).UpdateCartCount();
             System.Threading.Thread.Sleep(2000);
             ScriptManager.RegisterStartupScript(this, GetType(), "showCheckoutToast", "showCheckoutToast();", true);
-            Response.Redirect("RedirectOrder.aspx");            
+            Response.Redirect("RedirectOrder.aspx");
         }
 
 
