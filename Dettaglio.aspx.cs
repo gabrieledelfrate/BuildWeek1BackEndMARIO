@@ -83,36 +83,43 @@ namespace MARIO
                     products = (List<int>)Session["idprodotto"];
                 }
 
-                int quantita = Session["QuantitaSelezionata"] != null ? (int)Session["QuantitaSelezionata"] : 1;
-
-                for (int i = 0; i < quantita; i++)
+                if (!products.Contains(prodID))
                 {
-                    products.Add(prodID);
+                    int quantita = Session["QuantitaSelezionata"] != null ? (int)Session["QuantitaSelezionata"] : 1;
 
-                    CartItem cartItem = new CartItem
+                    for (int i = 0; i < quantita; i++)
                     {
-                        ProductId = prodID,
-                        Nome = ttlProduct.InnerText,
-                        Prezzo = decimal.Parse(txtPrice.InnerText.Replace("€", ""), CultureInfo.InvariantCulture),
-                        Immagine = img.Src
-                    };                                        
-                    Session["ProductInfo_" + prodID] = cartItem;
+                        products.Add(prodID);
+
+                        CartItem cartItem = new CartItem
+                        {
+                            ProductId = prodID,
+                            Nome = ttlProduct.InnerText,
+                            Prezzo = decimal.Parse(txtPrice.InnerText.Replace("€", ""), CultureInfo.InvariantCulture),
+                            Immagine = img.Src
+                        };
+                        Session["ProductInfo_" + prodID] = cartItem;
+                    }
+
+                    Session["idprodotto"] = products;
+
+                    int quantitaSelezionata = int.Parse(ddlQuantita.SelectedValue);
+                    HttpCookie quantitaCookie = new HttpCookie("QuantitaSelezionata_" + ProductID, quantitaSelezionata.ToString());
+                    quantitaCookie.Expires = DateTime.Now.AddMinutes(45);
+                    Response.Cookies.Add(quantitaCookie);
+
+                    int cartCount = (Session["CartCount"] != null) ? (int)Session["CartCount"] : 0;
+                    cartCount++;
+                    Session["CartCount"] = cartCount;
+
+                    ((MARIO.MasterPage)Master).UpdateCartCount();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessToast", "$('.toast-success').toast('show');", true);
                 }
-               
-                Session["idprodotto"] = products;
-
-                int quantitaSelezionata = int.Parse(ddlQuantita.SelectedValue);
-                HttpCookie quantitaCookie = new HttpCookie("QuantitaSelezionata_" + ProductID, quantitaSelezionata.ToString());
-                quantitaCookie.Expires = DateTime.Now.AddMinutes(45);
-                Response.Cookies.Add(quantitaCookie);
-
-                int cartCount = (Session["CartCount"] != null) ? (int)Session["CartCount"] : 0;
-                cartCount++;
-                Session["CartCount"] = cartCount;
-
-                ((MARIO.MasterPage)Master).UpdateCartCount();
-
-                ScriptManager.RegisterStartupScript(this, GetType(), "showSuccessToast", "$('.toast-success').toast('show');", true);
+                else
+                {                    
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showInfoToast", "$('.toast-info').toast('show');", true);
+                }
             }
             catch (Exception ex)
             {

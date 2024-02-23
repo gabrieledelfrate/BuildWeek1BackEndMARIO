@@ -155,6 +155,10 @@ namespace MARIO
                     else if (e.CommandName == "RemoveAllFromCart")
                     {                       
                         cartProductIds.RemoveAll(id => id == productIdToRemove);
+                        int cartCount = (Session["CartCount"] != null) ? (int)Session["CartCount"] : 0;
+                        cartCount--;
+                        Session["CartCount"] = cartCount;
+                        ((MARIO.MasterPage)Master).UpdateCartCount();
                         ScriptManager.RegisterStartupScript(this, GetType(), "showRemoveAllToast", "showToast('Prodotto eliminato dal carrello');", true);
                     }
                     Session["idprodotto"] = cartProductIds;
@@ -166,6 +170,9 @@ namespace MARIO
         {
             Session["idprodotto"] = null;
             BindCartItems();
+            int cartCount = 0;            
+            Session["CartCount"] = cartCount;
+            ((MARIO.MasterPage)Master).UpdateCartCount();
             Response.Redirect("Carrello.aspx");
             ScriptManager.RegisterStartupScript(this, GetType(), "showEmptyCartToast", "showEmptyCartToast();", true);            
         }
