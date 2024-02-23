@@ -13,5 +13,23 @@ namespace MARIO
 
     public partial class WebForm2
     {
+
+        /// <summary>
+        /// Controllo btnGoToHome.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGoToHome;
+
+        /// <summary>
+        /// Controllo GridViewStoricoOrdini.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewStoricoOrdini;
     }
 }
