@@ -169,7 +169,7 @@ namespace MARIO
         {
             Session["idprodotto"] = null;
             BindCartItems();
-            int cartCount = 0;
+            int cartCount = 0;            
             Session["CartCount"] = cartCount;
             ((MARIO.MasterPage)Master).UpdateCartCount();
             Response.Redirect("Carrello.aspx");
