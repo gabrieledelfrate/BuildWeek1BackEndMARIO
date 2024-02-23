@@ -50,7 +50,7 @@
                 </button>
             </div>
             <div class="toast-body text-light">
-                <p class="m-0 py-1">Prodotto aggiunto al carrello con successo!</p>
+                <p class="m-0 py-1">Prodotto aggiunto al carrello!</p>
             </div>
         </div>
         <div class="toast toast-info bg-warning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
@@ -61,7 +61,7 @@
                   </button>
              </div>
              <div class="toast-body text-light">
-                 <p class="m-0 py-1">Il prodotto e' gia presente nel carrello.</p>
+                 <p class="m-0 py-1">Prodotto gia presente nel carrello.</p>
             </div>
         </div>
         <div class="toast toast-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
@@ -72,7 +72,7 @@
                 </button>
             </div>
             <div class="toast-body text-light">
-                <p class="m-0 py-1">Si è verificato un errore durante l'aggiunta del prodotto al carrello.</p>
+                <p class="m-0 py-1">Errore durante l'aggiunta del prodotto.</p>
             </div>
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
