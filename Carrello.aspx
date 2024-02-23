@@ -47,8 +47,9 @@
                 </asp:Repeater>
 
                 <div class="d-flex justify-content-end align-items-center">
-                    <h5 class="mr-2">Prezzo totale: €</h5>
+                    <h5 class="mr-2">Prezzo totale: </h5>
                     <h5 id="totalPriceLabel" runat="server"></h5>
+                    <h5 class="mr-2"> € </h5>
                 </div>
                 <div class="d-flex justify-content-end align-items-center mt-3">
                     <asp:Button ID="btnCheckout" runat="server" Text="Acquista" CssClass="btn btn-primary mr-3 " OnClick="btnCheckout_Click" />
