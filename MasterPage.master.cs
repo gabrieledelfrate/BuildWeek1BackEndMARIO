@@ -27,6 +27,12 @@ namespace MARIO
             {
                 int cartCount = Convert.ToInt32(Session["CartCount"]);
                 lblCartCount.Text = cartCount > 0 ? cartCount.ToString() : string.Empty;
+
+                lblCartCount.Visible = cartCount > 0;
+            }
+            else
+            {
+                lblCartCount.Visible = false;
             }
         }
 
