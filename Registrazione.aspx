@@ -4,10 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Registrazione Piccol</title>
+    <link rel="icon" type="image/x-icon" href="/Images/piccol.ico" />
     <style>
         * {
             padding: 0;
@@ -119,7 +120,7 @@
     <form id="form1" runat="server" class="form">
         <div class="form-inner">
             <h2>REGISTRATI</h2>
-                        <h2>AL PICCOL</h2>
+            <h2>AL PICCOL</h2>
             <div class="content">
                 <asp:TextBox CssClass="input" ID="txtEmail" runat="server" placeholder="Email"></asp:TextBox>
                 <asp:TextBox CssClass="input" ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
@@ -128,7 +129,7 @@
             </div>
         </div>
 
-                <div class="toast toast-registration-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
+        <div class="toast toast-registration-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" style="position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 1000;">
             <div class="toast-header bg-success text-white fw-bold">
                 <strong class="mr-auto">Successo</strong>
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">

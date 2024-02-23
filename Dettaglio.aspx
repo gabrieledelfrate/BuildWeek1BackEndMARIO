@@ -21,11 +21,11 @@
 
     <div class="row mt-3 mb-5">
         <div class="col-7">
-            <p class="text-center fs-3 fw-bold" id="txtPrice" runat="server"></p>
+            <p class="text-center price" id="txtPrice" runat="server"></p>
         </div>
         <div class="col-3">
-            <asp:Button ID="btnAddCart" runat="server" Text="Aggiungi al carrello" CssClass="btn btn-outline-success ms-3" OnClick="btnAddCart_Click" />
-            <asp:DropDownList ID="ddlQuantita" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlQuantita_SelectedIndexChanged" CssClass="btn">
+            <asp:Button ID="btnAddCart" runat="server" Text="Aggiungi al carrello" CssClass="btn btn-outline-success" OnClick="btnAddCart_Click" />
+            <asp:DropDownList ID="ddlQuantita" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlQuantita_SelectedIndexChanged" CssClass="btn btn-outline-dark drop">
                 <asp:ListItem Text="1" Value="1" />
                 <asp:ListItem Text="2" Value="2" />
                 <asp:ListItem Text="3" Value="3" />
@@ -39,28 +39,30 @@
             </asp:DropDownList>
         </div>
     </div>
-<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0; right: 0; min-height: 200px; z-index: 1000;">
+
+<div aria-live="polite" aria-atomic="true" style="position: fixed; top: 0px; right: 0; min-height: 250px; z-index: 10000;">
+
     <div style="position: absolute; top: 0; right: 0;">
-         <div class="toast toast-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
-            <div class="toast-header">
-                <strong class="mr-auto">Successo</strong>
+         <div class="toast toast-success bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header bg-success text-light">
+                <h6 class="mr-auto py-1">Successo</h6>
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="toast-body">
-                Prodotto aggiunto al carrello con successo!
+            <div class="toast-body text-light">
+                <p class="m-0 py-1">Prodotto aggiunto al carrello con successo!</p>
             </div>
         </div>
         <div class="toast toast-error" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
-            <div class="toast-header">
-                <strong class="mr-auto">Errore</strong>
+            <div class="toast-header bg-danger text-light">
+                <h6 class="mr-auto py-1">Errore</h6>
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="toast-body">
-                Si � verificato un errore durante l'aggiunta del prodotto al carrello.
+            <div class="toast-body text-light">
+                <p class="m-0 py-1">Si � verificato un errore durante l'aggiunta del prodotto al carrello.</p>
             </div>
 
         </div>
